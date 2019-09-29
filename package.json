@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node lib/index.js",
     "lint": "eslint lib",
-    "test": "nyc mocha tests/unit/index.spec.js"
+    "test:unit": "nyc mocha tests/unit/index.spec.js",
+    "test:e2e": "mocha tests/end-to-end/index.spec.js"
   },
   "author": "Chris Lewis",
   "license": "ISC",
@@ -16,7 +17,9 @@
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
     "mocha": "^6.2.0",
-    "nyc": "^14.1.1"
+    "nock": "^11.3.5",
+    "nyc": "^14.1.1",
+    "request": "^2.88.0"
   },
   "dependencies": {
     "ajv": "^6.10.2",

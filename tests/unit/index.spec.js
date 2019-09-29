@@ -1,7 +1,8 @@
 const { expect } = require('chai');
 const validate = require('../../lib/utils/validate');
+const util = require('../../lib/util');
 
-describe('line-manager', () => {
+describe('line-manager Unit Tests', () => {
   describe('utils', () => {
     it('should perform schema validation', () => {
       const schema = {
@@ -13,6 +14,14 @@ describe('line-manager', () => {
       const data = { foo: 42 };
 
       expect(validate(schema, data)).to.equal(true);
+    });
+  });
+
+  describe('util.js', () => {
+    it('should create an error response object', () => {
+      const obj = util.createError('Some error reason');
+
+      expect(obj.error).to.equal('Some error reason');
     });
   });
 });
