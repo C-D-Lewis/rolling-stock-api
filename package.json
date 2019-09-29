@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "node lib/index.js",
-    "lint": "eslint",
+    "lint": "eslint lib",
     "test": "nyc mocha tests/unit/index.spec.js"
   },
   "author": "Chris Lewis",
@@ -14,6 +14,7 @@
     "chai": "^4.2.0",
     "eslint": "^6.5.0",
     "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
     "mocha": "^6.2.0",
     "nyc": "^14.1.1"
   },
@@ -24,6 +25,9 @@
   },
   "eslintConfig": {
     "extends": "eslint-config-airbnb-base",
+    "rules": {
+      "no-console": 0
+    },
     "env": {
       "node": true
     }
