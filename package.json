@@ -1,0 +1,43 @@
+{
+  "name": "line-manager",
+  "version": "1.0.0",
+  "description": "Service for managing trains and timetables.",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "node lib/index.js",
+    "lint": "eslint",
+    "test": "nyc mocha tests/unit/index.spec.js"
+  },
+  "author": "Chris Lewis",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^6.5.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "mocha": "^6.2.0",
+    "nyc": "^14.1.1"
+  },
+  "dependencies": {
+    "ajv": "^6.10.2",
+    "express": "^4.17.1",
+    "mongodb": "^3.3.2"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-airbnb-base",
+    "env": {
+      "node": true
+    }
+  },
+  "nyc": {
+    "exclude": [
+      "tests/*"
+    ],
+    "reporter": [
+      "cobertura",
+      "html",
+      "lcov",
+      "text-summary"
+    ],
+    "report-dir": "./reports"
+  }
+}
