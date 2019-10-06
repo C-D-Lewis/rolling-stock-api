@@ -2,8 +2,8 @@ const { expect } = require('chai');
 const validate = require('../../lib/utils/validate');
 const util = require('../../lib/util');
 
-describe('line-manager Unit Tests', () => {
-  describe('utils', () => {
+describe('test:unit', () => {
+  describe('util.js', () => {
     it('should perform schema validation', () => {
       const schema = {
         additionalProperties: false,

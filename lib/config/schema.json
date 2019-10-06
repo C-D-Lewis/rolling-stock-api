@@ -2,13 +2,9 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "additionalProperties": false,
   "required": [
-    "collections",
     "server"
   ],
   "properties": {
-    "collections": {
-      "type": "object"
-    },
     "server": {
       "additionalProperties": false,
       "required": [

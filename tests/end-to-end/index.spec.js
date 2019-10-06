@@ -1,34 +1,26 @@
 const { expect } = require('chai');
-const request = require('request');
-const nock = require('nock');
+const { post, get, put, del } = require('./utils');
 
-/**
- * Mock the API.
- */
-const mockApi = () => nock('http://localhost');
+describe('test:e2e', () => {
+  describe('Rolling Stock API', () => {
+    it('should create a RollingStockDocument', async () => {
+      const payload = { type: 'electric', class: '340' };
+      const res = await post('/rollingStock', payload);
 
-const requestApi = (method, path, data) => new Promise((resolve, reject) => {
-  request({
-    url: `http://localhost${path}`,
-    method,
-    body: data ? JSON.stringify(data) : undefined,
-  }, (err, response, body) => {
-    if (err) {
-      reject(err);
-      return;
-    }
+      const { body, statusCode } = res;
+      expect(statusCode).to.equal(201);
+      expect(body.id).to.be.a('string');
+      expect(body.type).to.equal(payload.type);
+    });
 
-    resolve({ response, data: JSON.stringify(body) });
-  });
-});
+    it('should read a RollingStockDocument by ID', async () => {
+      const payload = { type: 'electric', class: '340' };
+      let createRes = await post('/rollingStock', payload)
 
-describe('line-manager End to End Tests', () => {
-  describe('Rolling Stock', async () => {
-    const payload = { type: 'electric', class: '340' };
-    mockApi().post('/rollingStock', payload).reply(201, payload);
+      res = await get(`/rollingStock/${createRes.body.id}`);
 
-    const { response, data } = await requestApi('post', '/rollingStock', payload);
-
-    expect(data.type).to.equal(payload.type);
+      expect(res.body.id).to.equal(createRes.body.id);
+      expect(res.body.type).to.equal(payload.type);
+    });
   });
 });
