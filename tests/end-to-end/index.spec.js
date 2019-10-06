@@ -26,6 +26,16 @@ describe('test:e2e', () => {
       expect(res.statusCode).to.equal(200);
     });
 
+    it('should list all RollingStockDocuments', async () => {
+      const { body: created } = await post('/rollingStock', payload);
+
+      const res = await get('/rollingStock');
+
+      expect(res.body).to.have.length.gte(1);
+
+      await del(`/rollingStock/${created.id}`);
+    });
+
     it('should read a RollingStockDocument by ID', async () => {
       const { body: created } = await post('/rollingStock', payload);
 
