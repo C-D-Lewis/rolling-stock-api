@@ -3,24 +3,39 @@ const { post, get, put, del } = require('./utils');
 
 describe('test:e2e', () => {
   describe('Rolling Stock API', () => {
+    const payload = {
+      type: 'electric',
+      class: '340',
+      unitNumber: '340123',
+    };
+    let rollingStock;
+
     it('should create a RollingStockDocument', async () => {
-      const payload = { type: 'electric', class: '340' };
       const res = await post('/rollingStock', payload);
 
-      const { body, statusCode } = res;
-      expect(statusCode).to.equal(201);
-      expect(body.id).to.be.a('string');
-      expect(body.type).to.equal(payload.type);
+      expect(res.statusCode).to.equal(201);
+      expect(res.body.id).to.be.a('string');
+      expect(res.body.type).to.equal(payload.type);
+
+      rollingStock = res.body;
+    });
+
+    it('should delete a RollingStockDocument', async () => {
+      const res = await del(`/rollingStock/${rollingStock.id}`);
+
+      expect(res.statusCode).to.equal(200);
     });
 
     it('should read a RollingStockDocument by ID', async () => {
-      const payload = { type: 'electric', class: '340' };
-      let createRes = await post('/rollingStock', payload)
+      const { body: created } = await post('/rollingStock', payload);
 
-      res = await get(`/rollingStock/${createRes.body.id}`);
+      const res = await get(`/rollingStock/${created.id}`);
 
-      expect(res.body.id).to.equal(createRes.body.id);
+      expect(res.statusCode).to.equal(200);
+      expect(res.body.id).to.equal(created.id);
       expect(res.body.type).to.equal(payload.type);
+
+      await del(`/rollingStock/${created.id}`);
     });
   });
 });

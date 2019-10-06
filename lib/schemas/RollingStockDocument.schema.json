@@ -2,19 +2,26 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "additionalProperties": false,
   "required": [
+    "type",
     "class",
-    "type"
+    "unitNumber"
   ],
   "properties": {
-    "class": {
-      "type": "string"
-    },
     "type": {
       "type": "string",
       "enum": [
         "diesel",
-        "electric"
+        "electric",
+        "passenger",
+        "freight",
+        "maintenance"
       ]
+    },
+    "class": {
+      "type": "string"
+    },
+    "unitNumber": {
+      "type": "string"
     }
   }
 }

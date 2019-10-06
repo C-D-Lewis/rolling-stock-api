@@ -45,5 +45,4 @@ exports.put = (path, data) => chai.request(SERVER)
  * @param {string} path - URL path.
  * @returns {Object} Response object.
  */
-exports.delete = (path) => chai.request(SERVER)
-  .delete(path);
+exports.del = async (path) => chai.request(SERVER).delete(path);
