@@ -8,6 +8,18 @@
     "manufacturer"
   ],
   "properties": {
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "createdAt": {
+      "type": "number",
+      "readOnly": true
+    },
+    "updatedAt": {
+      "type": "number",
+      "readOnly": true
+    },
     "type": {
       "type": "string",
       "enum": [

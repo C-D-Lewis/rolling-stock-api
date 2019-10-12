@@ -53,11 +53,12 @@ describe('test:e2e', () => {
     it('should replace a RollingStockDocument by ID', async () => {
       const { body: created } = await post('/rollingStock', payload);
 
-      const replacePayload = { ...payload, unitNumber: '340124' };
+      const replacePayload = { ...created, unitNumber: '340124' };
       const res = await put(`/rollingStock/${created.id}`, replacePayload);
 
       expect(res.statusCode).to.equal(200);
-      expect(res.body).to.deep.equal(replacePayload);
+      expect(res.body.id).to.equal(created.id);
+      expect(res.body.unitNumber).to.equal(replacePayload.unitNumber);
 
       await del(`/rollingStock/${created.id}`);
     });
