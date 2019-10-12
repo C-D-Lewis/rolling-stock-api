@@ -58,6 +58,7 @@ describe('test:e2e', () => {
 
       expect(res.statusCode).to.equal(200);
       expect(res.body.id).to.equal(created.id);
+      expect(res.body.createdAt).to.not.equal(res.body.updatedAt);
       expect(res.body.unitNumber).to.equal(replacePayload.unitNumber);
 
       await del(`/rollingStock/${created.id}`);
