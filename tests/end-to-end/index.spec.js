@@ -4,9 +4,10 @@ const { post, get, put, del } = require('./utils');
 describe('test:e2e', () => {
   describe('Rolling Stock API', () => {
     const payload = {
-      type: 'electric',
-      class: '340',
-      unitNumber: '340123',
+      type: 'emu',
+      class: '345',
+      unitNumber: '345014',
+      manufacturer: 'Bombardier',
     };
     let rollingStock;
 
