@@ -1,6 +1,6 @@
 name: rollingStockId
 in: path
 required: true
-description: 'The id of the pet to retrieve'
+description: 'The ID of the rolling stock to retrieve'
 schema:
   type: string
