@@ -1,0 +1,12 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: 'Line Manager Service'
+servers:
+  -
+    url: 'http://localhost'
+paths: {}
+components:
+  parameters: {}
+  schemas: {}
+  requestBodies: {}

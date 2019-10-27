@@ -1,0 +1,45 @@
+additionalProperties: false
+required:
+  - type
+  - class
+  - unitNumber
+  - manufacturer
+properties:
+  id:
+    type: string
+    readOnly: true
+  createdAt:
+    type: number
+    readOnly: true
+  updatedAt:
+    type: number
+    readOnly: true
+  type:
+    type: string
+    enum:
+      - diesel
+      - electric
+      - passenger
+      - freight
+      - maintenance
+      - emu
+      - dmu
+  class:
+    type: string
+  unitNumber:
+    type: string
+  manufacturer:
+    type: string
+  manufactureDate:
+    type: string
+    format: date
+  operator:
+    type: string
+  inService:
+    type: boolean
+  serviceStartDate:
+    type: string
+    format: date
+  serviceEndDate:
+    type: string
+    format: date

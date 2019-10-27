@@ -1,0 +1,52 @@
+post:
+  summary: 'Create a rolling stock'
+  tags:
+    - 'Rolling Stock'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/RollingStockDocument'
+        example:
+          type: emu
+          class: '345'
+          unitNumber: '3450001'
+          manufacturer: Bombardier
+          id: ybegUSCoMoZJh8NLdtXZRDJ6yny65hhH
+          createdAt: 1570880557084
+          updatedAt: 1570880557084
+  responses:
+    '201':
+      description: 'Created rolling stock successfully.'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RollingStockDocument'
+          example:
+            type: emu
+            class: '345'
+            unitNumber: '3450001'
+            manufacturer: Bombardier
+            id: ybegUSCoMoZJh8NLdtXZRDJ6yny65hhH
+            createdAt: 1570880557084
+            updatedAt: 1570880557084
+get:
+  summary: 'List rolling stock'
+  tags:
+    - 'Rolling Stock'
+  responses:
+    '200':
+      description: 'A paged array of rolling stock items.'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RollingStockDocument'
+          example:
+            -
+              type: emu
+              class: '345'
+              unitNumber: '3450001'
+              manufacturer: Bombardier
+              id: ybegUSCoMoZJh8NLdtXZRDJ6yny65hhH
+              createdAt: 1570880557084
+              updatedAt: 1570880557084

@@ -1,0 +1,67 @@
+get:
+  summary: 'Read a rolling stock'
+  tags:
+    - 'Rolling Stock'
+  parameters:
+    -
+      $ref: '#/components/parameters/rollingStockId'
+  responses:
+    '200':
+      description: 'Rolling stock found successfully.'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RollingStockDocument'
+          example:
+            type: emu
+            class: '345'
+            unitNumber: '3450001'
+            manufacturer: Bombardier
+            id: ybegUSCoMoZJh8NLdtXZRDJ6yny65hhH
+            createdAt: 1570880557084
+            updatedAt: 1570880557084
+put:
+  summary: 'Update a rolling stock'
+  tags:
+    - 'Rolling Stock'
+  parameters:
+    -
+      $ref: '#/components/parameters/rollingStockId'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/RollingStockDocument'
+        example:
+          type: emu
+          class: '345'
+          unitNumber: '3450001'
+          manufacturer: Bombardier
+          id: ybegUSCoMoZJh8NLdtXZRDJ6yny65hhH
+          createdAt: 1570880557084
+          updatedAt: 1570880557084
+  responses:
+    '200':
+      description: 'Rolling stock updated successfully.'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RollingStockDocument'
+          example:
+            type: emu
+            class: '345'
+            unitNumber: '3450001'
+            manufacturer: Bombardier
+            id: ybegUSCoMoZJh8NLdtXZRDJ6yny65hhH
+            createdAt: 1570880557084
+            updatedAt: 1570880557084
+delete:
+  summary: 'Delete a rolling stock'
+  tags:
+    - 'Rolling Stock'
+  parameters:
+    -
+      $ref: '#/components/parameters/rollingStockId'
+  responses:
+    '204':
+      description: 'Rolling stock deleted successfully.'
