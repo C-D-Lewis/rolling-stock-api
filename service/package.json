@@ -1,5 +1,5 @@
 {
-  "name": "line-manager",
+  "name": "rolling-stock-service",
   "version": "1.0.0",
   "description": "Service for managing trains and timetables.",
   "main": "lib/index.js",

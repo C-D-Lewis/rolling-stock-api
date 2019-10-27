@@ -1,3 +1,3 @@
-# line-manager service
+# rolling-stock-service
 
-Model CRUD microservice API using MongoDB for railway related objects
+Model CRUD microservice API using MongoDB for railway related objects.

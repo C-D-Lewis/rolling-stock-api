@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   version: 1.0.0
-  title: 'Line Manager Service'
+  title: 'Rolling Stock Service'
 servers:
   -
     url: 'http://localhost'
