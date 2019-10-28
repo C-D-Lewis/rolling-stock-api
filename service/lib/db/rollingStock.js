@@ -1,8 +1,12 @@
-const { readFileSync } = require('fs');
 const { omit } = require('lodash');
 const { ObjectID } = require('mongodb');
 const chance = require('chance').Chance();
-const { insertOne, find, replaceOne, deleteOne } = require('./index');
+const {
+  insertOne,
+  find,
+  replaceOne,
+  deleteOne,
+} = require('./index');
 const schema = require('../schemas/RollingStockDocument.schema.json');
 const validate = require('../utils/validate');
 
@@ -44,7 +48,7 @@ exports.create = async (body) => {
  */
 exports.find = async (filter) => {
   const res = await find(COLLECTION_NAME, filter);
-  return res ? res.map(p => omit(p, ['_id'])) : null;
+  return res ? res.map((p) => omit(p, ['_id'])) : null;
 };
 
 /**
@@ -64,7 +68,11 @@ exports.replace = async (existing, body) => {
     createdAt: found.createdAt,
     updatedAt: Date.now(),
   };
-  await replaceOne(COLLECTION_NAME, { _id: ObjectID(found._id) }, newDoc);
+
+  await replaceOne(COLLECTION_NAME, {
+    /* eslint no-underscore-dangle: 0 */
+    _id: ObjectID(found._id),
+  }, newDoc);
   return newDoc;
 };
 

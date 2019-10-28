@@ -1,10 +1,9 @@
-const { readFileSync } = require('fs');
 const schema = require('./schema');
 const validate = require('../utils/validate');
 
 const config = {
   server: {
-    port: 8000,
+    port: process.env.PORT || 8000,
   },
 };
 
@@ -13,6 +12,7 @@ const config = {
  */
 const validateConfig = () => {
   if (!validate(schema, config)) {
+    console.log('Config was invalid!');
     process.exit(1);
   }
 

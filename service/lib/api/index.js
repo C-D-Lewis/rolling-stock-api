@@ -10,6 +10,7 @@ const {
 
 exports.init = async () => {
   const server = express();
+
   server.use(express.json());
   server.get('/healthcheck', (req, res) => res.status(200).json({ ping: 'pong' }));
 

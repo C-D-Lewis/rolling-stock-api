@@ -3,7 +3,7 @@ const { MongoClient } = require('mongodb');
 /* Connection URL */
 const MONGO_URL = 'mongodb://localhost:27017';
 /* Database Name */
-const DB_NAME = 'LineManager';
+const DB_NAME = 'RollingStockService';
 
 const client = new MongoClient(MONGO_URL);
 let db;
@@ -20,8 +20,8 @@ exports.init = async () => {
 /**
  * Deinitialise connection to MongoDB.
  */
-const deinit = () => {
-  client.close();
+const deinit = async () => {
+  await client.close();
   console.log('Connection to MongoDB closed');
 };
 

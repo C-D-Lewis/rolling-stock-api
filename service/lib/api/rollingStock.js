@@ -1,4 +1,10 @@
-const { create, find, replace, del, validate } = require('../db/rollingStock');
+const {
+  create,
+  find,
+  replace,
+  del,
+  validate,
+} = require('../db/rollingStock');
 const { createError } = require('../util');
 
 /**
