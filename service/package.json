@@ -6,6 +6,8 @@
   "scripts": {
     "start": "node lib/index.js",
     "lint": "eslint lib",
+    "docker:build": "docker build -t rolling-stock-service .",
+    "docker:run": "docker run -t rolling-stock-service",
     "test:unit": "nyc mocha tests/unit/index.spec.js",
     "test:e2e": "mocha tests/end-to-end/index.spec.js"
   },
