@@ -5,7 +5,7 @@ const {
   del,
   validate,
 } = require('../db/rollingStock');
-const { createError } = require('../util');
+const createError = require('../utils/createError');
 
 /**
  * Validate and create a RollingStockDocument.

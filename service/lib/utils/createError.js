@@ -4,4 +4,6 @@
  * @param {string} message - Error message.
  * @returns {object} The completed error response.
  */
-exports.createError = (message) => ({ error: message });
+const createError = (message) => ({ error: message });
+
+module.exports = createError;
