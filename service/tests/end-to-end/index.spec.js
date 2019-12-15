@@ -6,7 +6,7 @@ describe('test:e2e', () => {
     const payload = {
       type: 'emu',
       class: '345',
-      unitNumber: '345014',
+      unitNumber: '345999',
       manufacturer: 'Bombardier',
     };
     let rollingStock;

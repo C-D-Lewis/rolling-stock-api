@@ -82,6 +82,4 @@ exports.replace = async (existing, body) => {
  * @param {string} id - ID to delete by.
  * @returns {Promise}
  */
-exports.del = async (id) => {
-  await deleteOne(COLLECTION_NAME, { id });
-};
+exports.del = async (id) => deleteOne(COLLECTION_NAME, { id });
