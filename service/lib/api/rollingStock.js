@@ -10,142 +10,110 @@ const createError = require('../utils/createError');
 /**
  * Validate and create a RollingStockDocument.
  *
- * @params {Object} req - Request object.
- * @params {Object} res - Response object.
- * @returns {Promise}
+ * @params {Object} body - Request body.
+ * @returns {Promise<{ status, json }>}
  */
-exports.create = async (req, res) => {
-  if (!validate(req.body)) {
+exports.create = async (body) => {
+  if (!validate(body)) {
     console.log('Invalid payload');
-    return res.status(400).json(createError('Invalid payload'));
+    return { status: 400, json: createError('Invalid payload') };
   }
 
-  const existing = await find({ unitNumber: req.body.unitNumber });
+  const existing = await find({ unitNumber: body.unitNumber });
   if (existing.length) {
     console.log('Already exists');
-    return res.status(409).json(createError('Rolling stock with this unitNumber already exists.'));
+    return { status: 409, json: createError('Rolling stock with this unitNumber already exists.') };
   }
 
-  try {
-    const doc = await create(req.body);
-    return res.status(201).json(doc);
-  } catch (e) {
-    console.log(`Error creating rolling stock: ${e.stack}`);
-    return res.status(500).json(createError('Server error'));
-  }
+  return { status: 201, json: await create(body) };
 };
 
 /**
  * List all RollingStockDocument.
  *
- * TODO: Pagination
+ * TODO: Pagination?
  *
- * @params {Object} req - Request object.
- * @params {Object} res - Response object.
- * @returns {Promise}
+ * @params {Object} body - Request body.
+ * @returns {Promise<{ status, json }>}
  */
-exports.list = async (req, res) => {
-  try {
-    const array = await find({});
-    return res.status(200).json(array);
-  } catch (e) {
-    console.log(`Error listing rolling stock: ${e.stack}`);
-    return res.status(500).json(createError('Server error'));
-  }
-};
+exports.list = async () => ({ status: 200, json: await find({}) });
 
 /**
  * Read a RollingStockDocument by 'id'.
  *
- * @params {Object} req - Request object.
- * @params {Object} res - Response object.
- * @returns {Promise}
+ * @params {Object} body - Request body.
+ * @params {Object} params - Request params.
+ * @returns {Promise<{ status, json }>}
  */
-exports.read = async (req, res) => {
-  const { rollingStockId } = req.params;
+exports.read = async (body, params) => {
+  const { rollingStockId } = params;
   if (!rollingStockId) {
     console.log('No rollingStockId specified!');
-    return res.status(400).json(createError('No ID specified'));
+    return { status: 400, json: createError('No ID specified') };
   }
 
   // Check it exists
   const [existing] = await find({ id: rollingStockId });
   if (!existing) {
     console.log('Not found');
-    return res.status(404).json(createError('Not found'));
+    return { status: 404, json: createError('Not found') };
   }
 
-  try {
-    const [doc] = await find({ id: rollingStockId });
-    return res.status(200).json(doc);
-  } catch (e) {
-    console.log(`Error reading rolling stock: ${e.stack}`);
-    return res.status(500).json(createError('Server error'));
-  }
+  const [doc] = await find({ id: rollingStockId });
+  return { status: 200, json: doc };
 };
 
 /**
  * Completely update a RollingStockDocument by 'id'.
  *
- * @params {Object} req - Request object.
- * @params {Object} res - Response object.
- * @returns {Promise}
+ * @params {Object} body - Request body.
+ * @params {Object} params - Request params.
+ * @returns {Promise<{ status, json }>}
  */
-exports.replace = async (req, res) => {
-  const { rollingStockId } = req.params;
+exports.replace = async (body, params) => {
+  const { rollingStockId } = params;
   if (!rollingStockId) {
     console.log('No rollingStockId specified!');
-    return res.status(400).json(createError('No ID specified'));
+    return { status: 400, json: createError('No ID specified') };
   }
 
   // Validate the payload
-  if (!validate(req.body)) {
+  if (!validate(body)) {
     console.log('Invalid payload');
-    return res.status(400).json(createError('Invalid payload'));
+    return { status: 400, json: createError('Invalid payload') };
   }
 
   // Check it exists
   const [existing] = await find({ id: rollingStockId });
   if (!existing) {
     console.log('Not found');
-    return res.status(404).json(createError('Not found'));
+    return { status: 404, json: createError('Not found') };
   }
 
-  try {
-    const updated = await replace(existing, req.body);
-    return res.status(200).json(updated);
-  } catch (e) {
-    console.log(`Error updating rolling stock: ${e.stack}`);
-    return res.status(500).json(createError('Server error'));
-  }
+  return { status: 200, json: await replace(existing, body) };
 };
 
 /**
  * Delete a RollingStockDocument by 'id'.
  *
- * @params {Object} req - Request object.
- * @params {Object} res - Response object.
- * @returns {Promise}
+ * @params {Object} body - Request body.
+ * @params {Object} params - Request params.
+ * @returns {Promise<{ status, json }>}
  */
-exports.del = async (req, res) => {
-  const { rollingStockId } = req.params;
+exports.del = async (body, params) => {
+  const { rollingStockId } = params;
   if (!rollingStockId) {
     console.log('No rollingStockId specified!');
-    return res.status(400).json(createError('No ID specified'));
+    return { status: 400, json: createError('No ID specified') };
   }
 
   // Check it exists
   const [existing] = await find({ id: rollingStockId });
   if (!existing) {
     console.log('Not found');
-    return res.status(404).json(createError('Not found'));
+    return { status: 404, json: createError('Not found') };
   }
 
-  try {
-    await del(rollingStockId);
-    return res.status(200).send();
-  } catch (e) {
-    console.log(`Error deleting rolling stock: ${e.stack}`);
-    return res.status(500).json(createError('Server error'));
-  }
+  await del(rollingStockId);
+  return { status: 200 };
 };
