@@ -9,10 +9,24 @@ const {
 } = require('./rollingStock');
 const middleware = require('./middleware');
 
+/**
+ * Middleware to enable browser pre-flight requests.
+ *
+ * @param {object} req - Request object.
+ * @param {object} res - Response object.
+ * @param {function} next - Callback for next middleware.
+ */
+const enablePreflight = (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+};
+
 exports.init = async () => {
   const server = express();
 
   server.use(express.json());
+  server.use(enablePreflight);
   server.get('/healthcheck', (req, res) => res.status(200).json({ ping: 'pong' }));
 
   server.post('/rollingStock', middleware(createRollingStock));
