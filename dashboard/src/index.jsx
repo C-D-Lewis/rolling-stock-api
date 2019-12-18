@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Navbar from './components/Navbar.jsx';
+import RootContainer from './components/RootContainer.jsx';
 
 class Application extends React.Component {
   /**
@@ -31,7 +33,11 @@ class Application extends React.Component {
    * Component render function.
    */
   render () {
-    return <div>Hello, world!</div>;
+    return (
+      <RootContainer>
+        <Navbar/>
+      </RootContainer>
+    );
   }
 }
 
