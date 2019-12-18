@@ -1,4 +1,5 @@
 import React from 'react';
+import { Colors } from '../theme';
 
 /**
  * RootContainer component.
@@ -9,9 +10,10 @@ import React from 'react';
 const RootContainer = ({ children }) => {
   const style = {
     width: '100%',
+    height: '100%',
     margin: 0,
     padding: 0,
-    backgroundColor: 'white',
+    backgroundColor: Colors.background,
   };
 
   return <div style={style}>{children}</div>;
