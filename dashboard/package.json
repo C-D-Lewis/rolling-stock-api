@@ -1,0 +1,25 @@
+{
+  "name": "rolling-stock-api-dashboard",
+  "version": "1.0.0",
+  "description": "Dashboard application for managing rolling stock resources",
+  "main": "webpack.config.js",
+  "scripts": {
+    "build": "webpack --mode production --config webpack.config.js",
+    "build-dev": "webpack --mode development --config webpack.config.js",
+    "start": "npm run build && python -m SimpleHTTPServer",
+    "start-dev": "webpack-dev-server --mode development --config webpack.config.js"
+  },
+  "keywords": [],
+  "author": "Chris Lewis",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.7.5",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "webpack": "^4.41.3",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.0"
+  }
+}
