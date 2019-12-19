@@ -1,8 +1,10 @@
 import React from 'react';
-import { Colors } from '../theme';
+import { Colors, Images } from '../theme';
+import Image from './Image.jsx'
+import Text from './Text.jsx'
 
 /** Navbar height */
-export const NAVBAR_HEIGHT = 60;
+export const NAVBAR_HEIGHT = 70;
 
 /**
  * Navbar component.
@@ -10,7 +12,7 @@ export const NAVBAR_HEIGHT = 60;
  * @param {Object} props - Component props.
  * @returns {HTMLElement}
  */
-const Navbar = ({ children }) => {
+export const Navbar = ({ children }) => {
   const style = {
     display: 'flex',
     flexDirection: 'row',
@@ -25,4 +27,31 @@ const Navbar = ({ children }) => {
   return <div style={style}>{children}</div>;
 };
 
-export default Navbar;
+/**
+ * NavbarLogo component.
+ *
+ * @param {Object} props - Component props.
+ * @returns {HTMLElement}
+ */
+export const NavbarLogo = () => {
+  const style = { width: 36, marginLeft: 10 };
+
+  return <Image src={Images.logo} restyle={style}/>
+};
+
+/**
+ * NavbarTitle component.
+ *
+ * @param {Object} props - Component props.
+ * @returns {HTMLElement}
+ */
+export const NavbarTitle = ({ children }) => {
+  const style = {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'white',
+    marginLeft: 10,
+  };
+
+  return <Text restyle={style}>{children}</Text>;
+};

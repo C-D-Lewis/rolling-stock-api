@@ -1,12 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Colors, Images } from './theme';
-import Navbar from './components/Navbar.jsx';
+import { Navbar, NavbarLogo, NavbarTitle } from './components/Navbar.jsx';
 import Container from './components/Container.jsx';
-import Sidebar from './components/Sidebar.jsx';
-import Image from './components/Image.jsx';
+import { Sidebar, SidebarMenuItem } from './components/Sidebar.jsx';
 import Text from './components/Text.jsx';
 
+/**
+ * RootContainer component.
+ *
+ * @param {Object} props - Component props.
+ * @returns {HTMLElement}
+ */
+const RootContainer = ({ children }) => {
+  const style = {
+    width: '100%',
+    height: '100%',
+    margin: 0,
+    padding: 0,
+    backgroundColor: Colors.background,
+  };
+
+  return <Container restyle={style}>{children}</Container>;
+};
+
+/**
+ * Main Application class.
+ */
 class Application extends React.Component {
   /**
    * Application class constructor
@@ -19,18 +39,6 @@ class Application extends React.Component {
     this.state = {
 
     };
-
-    this.setStateSync = this.setStateSync.bind(this);
-  }
-
-  /**
-   * Async-await version of setState.
-   *
-   * @param {Object} slice - State slice.
-   * @returns {Promise}
-   */
-  setStateSync (slice) {
-    return new Promise(resolve => this.setState(slice, resolve));
   }
 
   /**
@@ -38,27 +46,22 @@ class Application extends React.Component {
    */
   render () {
     return (
-      <Container restyle={{
-        width: '100%',
-        height: '100%',
-        margin: 0,
-        padding: 0,
-        backgroundColor: Colors.background,
-      }}>
+      <RootContainer>
         <Navbar>
-          <Image src={Images.logo} restyle={{ width: 36, marginLeft: 10 }}/>
-          <Text restyle={{
-            fontSize: 24,
-            color: 'white',
-            marginLeft: 10,
-          }}>Rolling Stock API Dashboard</Text>
+          <NavbarLogo/>
+          <NavbarTitle>Rolling Stock API Dashboard</NavbarTitle>
         </Navbar>
         <Container restyle={{ flexDirection: 'row', height: '100%' }}>
-          <Sidebar/>
+          <Sidebar>
+            <SidebarMenuItem>Overview</SidebarMenuItem>
+            <SidebarMenuItem>Create New</SidebarMenuItem>
+            <SidebarMenuItem>Find Existing</SidebarMenuItem>
+          </Sidebar>
           <Container restyle={{ width: '100%' }}>
+            CONTENT HERE
           </Container>
         </Container>
-      </Container>
+      </RootContainer>
     );
   }
 }

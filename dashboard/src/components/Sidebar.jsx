@@ -6,7 +6,7 @@ import React from 'react';
  * @param {Object} props - Component props.
  * @returns {HTMLElement}
  */
-const Sidebar = ({ children }) => {
+export const Sidebar = ({ children }) => {
   const style = {
     backgroundColor: 'white',
     width: 250,
@@ -18,4 +18,27 @@ const Sidebar = ({ children }) => {
   return <div style={style}>{children}</div>;
 };
 
-export default Sidebar;
+/**
+ * SidebarMenuItem component.
+ *
+ * @param {Object} props - Component props.
+ * @returns {HTMLElement}
+ */
+export const SidebarMenuItem = ({ children }) => {
+  const style = {
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    height: 45,
+    borderBottom: '1px solid #0004',
+    cursor: 'pointer',
+    alignItems: 'center',
+  };
+
+  return (
+    <div className="sidebarMenuItem" style={style}>
+      <div style={{ marginLeft: 10 }}>{children}</div>
+    </div>
+  );
+};
+
