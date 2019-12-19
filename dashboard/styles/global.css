@@ -6,3 +6,7 @@ body {
 div#app {
   height: 100vh;
 }
+
+* {
+  font-family: 'Roboto';
+}

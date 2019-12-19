@@ -5,3 +5,8 @@ export const Colors = {
     background: '#32a852',
   }
 };
+
+/** Theme images */
+export const Images = {
+  logo: '../assets/images/logo.png',
+};
