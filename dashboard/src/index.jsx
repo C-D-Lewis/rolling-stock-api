@@ -2,9 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Colors, Images } from './theme';
 import { Navbar, NavbarLogo, NavbarTitle } from './components/Navbar.jsx';
-import Container from './components/Container.jsx';
 import { Sidebar, SidebarMenuItem } from './components/Sidebar.jsx';
+import Container from './components/Container.jsx';
 import Text from './components/Text.jsx';
+import BlankPage from './pages/BlankPage.jsx';
 
 /**
  * RootContainer component.
@@ -37,7 +38,7 @@ class Application extends React.Component {
     super(props);
 
     this.state = {
-
+      currentPage: BlankPage,
     };
   }
 
@@ -45,6 +46,8 @@ class Application extends React.Component {
    * Component render function.
    */
   render () {
+    const CurrentPage = this.state.currentPage;
+
     return (
       <RootContainer>
         <Navbar>
@@ -58,7 +61,7 @@ class Application extends React.Component {
             <SidebarMenuItem>Find Existing</SidebarMenuItem>
           </Sidebar>
           <Container restyle={{ width: '100%' }}>
-            CONTENT HERE
+            <CurrentPage state={this.state}/>
           </Container>
         </Container>
       </RootContainer>
