@@ -1,4 +1,8 @@
 .sidebarMenuItem:hover {
-  background-color: #eee;
+  background-color: #ddd;
   font-weight: bold;
+}
+
+.button:hover {
+  filter: brightness(1.1);
 }

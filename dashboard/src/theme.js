@@ -4,6 +4,11 @@ export const Colors = {
   title: '#222',
   subtitle: '#666',
   navbar: {
+    foreground: 'white',
+    background: '#32a852',
+  },
+  button: {
+    foreground: 'white',
     background: '#32a852',
   },
 };
@@ -11,4 +16,8 @@ export const Colors = {
 /** Theme images */
 export const Images = {
   logo: '../assets/images/logo.png',
+};
+
+export const Styles = {
+  boxShadow: '2px 2px 2px 0.5px #777',
 };

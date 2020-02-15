@@ -1,5 +1,5 @@
 import React from 'react';
-import { Colors } from '../theme';
+import { Colors, Styles } from '../theme';
 import Container from './Container.jsx';
 import Text from './Text.jsx';
 
@@ -16,18 +16,19 @@ const Card = ({ children, title, subtitle }) =>
     borderRadius: 5,
     padding: 10,
     marginTop: 15,
-    boxShadow: '2px 2px 6px 0.5px #777',
+    boxShadow: Styles.boxShadow,
   }}>
     <Text restyle={{
-      fontSize: '1.2rem',
+      fontSize: '1.3rem',
       color: Colors.title,
       marginBottom: 5,
     }}>{title}</Text>
     <Text restyle={{
       fontSize: '1.0rem',
       color: Colors.subtitle,
-      marginBottom: 5,
+      marginBottom: 10,
     }}>{subtitle}</Text>
+    {children}
   </Container>;
 
 export default Card;
