@@ -3,16 +3,16 @@ import { Colors } from '../theme';
 import Text from './Text.jsx';
 
 /**
- * Title component.
+ * Subtitle component.
  *
  * @param {Object} props - Component props.
  * @returns {HTMLElement}
  */
-const Title = ({ children }) =>
+const Subtitle = ({ children }) =>
   <Text restyle={{
-    fontSize: '2rem',
-    fontWeight: 'bold',
-    color: Colors.title,
+    fontSize: '1.1rem',
+    color: Colors.subtitle,
+    marginTop: 10,
   }}>{children}</Text>;
 
-export default Title;
+export default Subtitle;

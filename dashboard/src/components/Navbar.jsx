@@ -20,7 +20,7 @@ export const Navbar = ({ children }) => {
     width: '100%',
     height: NAVBAR_HEIGHT,
     backgroundColor: Colors.navbar.background,
-    boxShadow: '-2px 3px 3px 4px #1113',
+    // boxShadow: '-2px 3px 3px 4px #1113',
     zIndex: 999,
   };
 

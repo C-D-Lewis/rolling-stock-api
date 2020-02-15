@@ -50,13 +50,19 @@ const Dashboard = () => {
       </Navbar>
       <Container restyle={{ flexDirection: 'row', height: '100%' }}>
         <Sidebar>
-          <SidebarMenuItem onClick={() => dispatch(setCurrentPage(OverviewPage))}>
+          <SidebarMenuItem
+            selected={currentPage === OverviewPage}
+            onClick={() => dispatch(setCurrentPage(OverviewPage))}>
             Overview
           </SidebarMenuItem>
-          <SidebarMenuItem onClick={() => dispatch(setCurrentPage(CreatePage))}>
+          <SidebarMenuItem
+            selected={currentPage === CreatePage}
+            onClick={() => dispatch(setCurrentPage(CreatePage))}>
             Create New
           </SidebarMenuItem>
-          <SidebarMenuItem onClick={() => dispatch(setCurrentPage(FindPage))}>
+          <SidebarMenuItem
+            selected={currentPage === FindPage}
+            onClick={() => dispatch(setCurrentPage(FindPage))}>
             Find Existing
           </SidebarMenuItem>
         </Sidebar>

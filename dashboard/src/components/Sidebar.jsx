@@ -11,7 +11,8 @@ export const Sidebar = ({ children }) => {
     backgroundColor: 'white',
     width: 250,
     height: '100%',
-    boxShadow: '2px 3px 3px 4px #1113',
+    // boxShadow: '2px 3px 3px 4px #1113',
+    borderRight: 'solid 1px #1114',
     zIndex: 999,
   };
 
@@ -24,7 +25,7 @@ export const Sidebar = ({ children }) => {
  * @param {Object} props - Component props.
  * @returns {HTMLElement}
  */
-export const SidebarMenuItem = ({ children, onClick }) => {
+export const SidebarMenuItem = ({ children, onClick, selected }) => {
   const style = {
     display: 'flex',
     flexDirection: 'row',
@@ -33,6 +34,7 @@ export const SidebarMenuItem = ({ children, onClick }) => {
     borderBottom: '1px solid #0004',
     cursor: 'pointer',
     alignItems: 'center',
+    backgroundColor: selected ? '#ddd' : 'white',
   };
 
   return (
