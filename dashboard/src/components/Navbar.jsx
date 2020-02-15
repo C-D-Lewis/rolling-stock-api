@@ -19,7 +19,7 @@ export const Navbar = ({ children }) => {
     alignItems: 'center',
     width: '100%',
     height: NAVBAR_HEIGHT,
-    backgroundColor: Colors.navbar.background,
+    backgroundColor: Colors.Navbar.background,
     // boxShadow: '-2px 3px 3px 4px #1113',
     zIndex: 999,
   };

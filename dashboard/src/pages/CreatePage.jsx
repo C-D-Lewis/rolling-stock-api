@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Container from '../components/Container.jsx';
 import Fader from '../components/Fader.jsx';
 import Button from '../components/Button.jsx';
@@ -11,6 +12,7 @@ import Row from '../components/Row.jsx';
 import Input from '../components/Input.jsx';
 import Select from '../components/Select.jsx';
 
+const SERVICE_PORT = 8000;
 const TYPES = [
   'diesel',
   'electric',
@@ -23,10 +25,31 @@ const TYPES = [
 const TYPE_OPTIONS = TYPES.map(p => ({ name: p.charAt(0).toUpperCase() + p.slice(1), value: p }));
 
 const CreatePage = () => {
+  const ip = useSelector(state => state.ip);
+
   const [type, setType] = useState(TYPES[0]);
   const [className, setClassName] = useState('');
   const [unitNumber, setUnitNumber] = useState('');
   const [manufacturer, setManufacturer] = useState('');
+
+  const createResource = async () => {
+    try {
+      const res = await fetch(`http://${ip}:${SERVICE_PORT}/rollingStock`, {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type,
+          'class': className,
+          unitNumber,
+          manufacturer,
+        }),
+      });
+      const json = await res.json();
+      console.log(json);
+    } catch (e) {
+      alert(e);
+    }
+  };
 
   return (
     <Fader>
@@ -54,7 +77,7 @@ const CreatePage = () => {
           </Container>
         </Card>
         <Container restyle={{ flexDirection: 'row', marginTop: 15, }}>
-          <Button onClick={() => {}}>Create</Button>
+          <Button onClick={createResource}>Create</Button>
         </Container>
       </Container>
     </Fader>

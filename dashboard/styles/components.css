@@ -8,5 +8,5 @@
 }
 
 .input:focus {
-  background-color: #4441;
+  filter: brightness(0.8);
 }

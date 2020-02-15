@@ -3,11 +3,11 @@ export const Colors = {
   background: '#eee',
   title: '#222',
   subtitle: '#666',
-  navbar: {
+  Navbar: {
     foreground: 'white',
     background: '#32a852',
   },
-  button: {
+  Button: {
     foreground: 'white',
     background: '#32a852',
   },

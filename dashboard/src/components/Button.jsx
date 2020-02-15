@@ -10,8 +10,8 @@ import { Colors, Styles } from '../theme';
 const Button = ({ children, onClick }) =>
   <div className="button" onClick={onClick} style={{
     borderRadius: 5,
-    color: Colors.button.foreground,
-    backgroundColor: Colors.button.background,
+    color: Colors.Button.foreground,
+    backgroundColor: Colors.Button.background,
     padding: '10px 15px',
     cursor: 'pointer',
     fontWeight: 'bold',
