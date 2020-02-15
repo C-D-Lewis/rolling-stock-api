@@ -37,6 +37,10 @@ const Dashboard = () => {
   const ip = useSelector(state => state.ip);
   const currentPage = useSelector(state => state.currentPage);
 
+  useEffect(() => {
+    dispatch(setCurrentPage(OverviewPage));
+  }, []);
+
   const CurrentPage = currentPage;
   return (
     <RootContainer>
