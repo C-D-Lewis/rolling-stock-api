@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch, Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
 import { Colors, Images } from './theme';
 import { Navbar, NavbarLogo, NavbarTitle } from './components/Navbar.jsx';
 import { Sidebar, SidebarMenuItem } from './components/Sidebar.jsx';
+import store from './store';
 import Container from './components/Container.jsx';
 import Text from './components/Text.jsx';
 import BlankPage from './pages/BlankPage.jsx';
@@ -26,47 +28,39 @@ const RootContainer = ({ children }) => {
 };
 
 /**
- * Main Application class.
+ * Main Dashboard component.
  */
-class Application extends React.Component {
-  /**
-   * Application class constructor
-   *
-   * @param {Object} props - Component props.
-   */
-  constructor (props) {
-    super(props);
+const Dashboard = () => {
+  const dispatch = useDispatch();
 
-    this.state = {
-      currentPage: BlankPage,
-    };
-  }
+  const ip = useSelector(state => state.ip);
+  const currentPage = useSelector(state => state.currentPage);
 
-  /**
-   * Component render function.
-   */
-  render () {
-    const CurrentPage = this.state.currentPage;
-
-    return (
-      <RootContainer>
-        <Navbar>
-          <NavbarLogo/>
-          <NavbarTitle>Rolling Stock API Dashboard</NavbarTitle>
-        </Navbar>
-        <Container restyle={{ flexDirection: 'row', height: '100%' }}>
-          <Sidebar>
-            <SidebarMenuItem>Overview</SidebarMenuItem>
-            <SidebarMenuItem>Create New</SidebarMenuItem>
-            <SidebarMenuItem>Find Existing</SidebarMenuItem>
-          </Sidebar>
-          <Container restyle={{ width: '100%' }}>
-            <CurrentPage state={this.state}/>
-          </Container>
+  const CurrentPage = currentPage;
+  return (
+    <RootContainer>
+      <Navbar>
+        <NavbarLogo/>
+        <NavbarTitle>Rolling Stock API Dashboard</NavbarTitle>
+      </Navbar>
+      <Container restyle={{ flexDirection: 'row', height: '100%' }}>
+        <Sidebar>
+          <SidebarMenuItem>Overview</SidebarMenuItem>
+          <SidebarMenuItem>Create New</SidebarMenuItem>
+          <SidebarMenuItem>Find Existing</SidebarMenuItem>
+        </Sidebar>
+        <Container restyle={{ width: '100%' }}>
+          <CurrentPage/>
         </Container>
-      </RootContainer>
-    );
-  }
-}
+      </Container>
+    </RootContainer>
+  );
+};
+
+const Application = () => (
+  <Provider store={store}>
+    <Dashboard/>
+  </Provider>
+);
 
 ReactDOM.render(<Application/>, document.getElementById('app'));

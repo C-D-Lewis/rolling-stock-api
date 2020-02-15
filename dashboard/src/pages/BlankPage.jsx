@@ -1,5 +1,5 @@
 import React from 'react';
 
-const BlankPage = ({ state }) => <div/>;
+const BlankPage = () => <div/>;
 
 export default BlankPage;
