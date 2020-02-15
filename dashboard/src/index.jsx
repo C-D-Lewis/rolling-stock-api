@@ -4,10 +4,14 @@ import ReactDOM from 'react-dom';
 import { Colors, Images } from './theme';
 import { Navbar, NavbarLogo, NavbarTitle } from './components/Navbar.jsx';
 import { Sidebar, SidebarMenuItem } from './components/Sidebar.jsx';
+import { setCurrentPage } from './actions';
 import store from './store';
 import Container from './components/Container.jsx';
 import Text from './components/Text.jsx';
 import BlankPage from './pages/BlankPage.jsx';
+import OverviewPage from './pages/OverviewPage.jsx';
+import CreatePage from './pages/CreatePage.jsx';
+import FindPage from './pages/FindPage.jsx';
 
 /**
  * RootContainer component.
@@ -15,17 +19,14 @@ import BlankPage from './pages/BlankPage.jsx';
  * @param {Object} props - Component props.
  * @returns {HTMLElement}
  */
-const RootContainer = ({ children }) => {
-  const style = {
+const RootContainer = ({ children }) =>
+  <Container restyle={{
     width: '100%',
     height: '100%',
     margin: 0,
     padding: 0,
     backgroundColor: Colors.background,
-  };
-
-  return <Container restyle={style}>{children}</Container>;
-};
+  }}>{children}</Container>;
 
 /**
  * Main Dashboard component.
@@ -45,9 +46,15 @@ const Dashboard = () => {
       </Navbar>
       <Container restyle={{ flexDirection: 'row', height: '100%' }}>
         <Sidebar>
-          <SidebarMenuItem>Overview</SidebarMenuItem>
-          <SidebarMenuItem>Create New</SidebarMenuItem>
-          <SidebarMenuItem>Find Existing</SidebarMenuItem>
+          <SidebarMenuItem onClick={() => dispatch(setCurrentPage(OverviewPage))}>
+            Overview
+          </SidebarMenuItem>
+          <SidebarMenuItem onClick={() => dispatch(setCurrentPage(CreatePage))}>
+            Create New
+          </SidebarMenuItem>
+          <SidebarMenuItem onClick={() => dispatch(setCurrentPage(FindPage))}>
+            Find Existing
+          </SidebarMenuItem>
         </Sidebar>
         <Container restyle={{ width: '100%' }}>
           <CurrentPage/>

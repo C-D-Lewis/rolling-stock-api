@@ -24,7 +24,7 @@ export const Sidebar = ({ children }) => {
  * @param {Object} props - Component props.
  * @returns {HTMLElement}
  */
-export const SidebarMenuItem = ({ children }) => {
+export const SidebarMenuItem = ({ children, onClick }) => {
   const style = {
     display: 'flex',
     flexDirection: 'row',
@@ -36,7 +36,7 @@ export const SidebarMenuItem = ({ children }) => {
   };
 
   return (
-    <div className="sidebarMenuItem" style={style}>
+    <div className="sidebarMenuItem" style={style} onClick={onClick}>
       <div style={{ marginLeft: 10 }}>{children}</div>
     </div>
   );
