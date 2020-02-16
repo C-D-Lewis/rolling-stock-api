@@ -3,6 +3,11 @@ import Container from '../components/Container.jsx';
 import Fader from '../components/Fader.jsx';
 import Title from '../components/Title.jsx';
 
+/**
+ * Overview resource page component.
+ *
+ * @returns {HTMLElement}
+ */
 const OverviewPage = () => {
 
   return (

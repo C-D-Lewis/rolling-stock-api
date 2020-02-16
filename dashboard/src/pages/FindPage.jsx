@@ -3,6 +3,11 @@ import Container from '../components/Container.jsx';
 import Fader from '../components/Fader.jsx';
 import Title from '../components/Title.jsx';
 
+/**
+ * Find resource page component.
+ *
+ * @returns {HTMLElement}
+ */
 const FindPage = () => {
 
   return (

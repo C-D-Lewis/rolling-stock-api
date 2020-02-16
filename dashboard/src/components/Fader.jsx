@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
+/**
+ * Fader component.
+ *
+ * @param {Object} props - Component props.
+ * @returns {HTMLElement}
+ */
 const Fader = ({ children }) => {
   const [visible, setVisible] = useState(false);
 

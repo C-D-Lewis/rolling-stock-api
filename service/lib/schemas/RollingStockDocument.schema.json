@@ -33,16 +33,20 @@
         "maintenance",
         "emu",
         "dmu"
-      ]
+      ],
+      "minLength": 1
     },
     "class": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1
     },
     "unitNumber": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1
     },
     "manufacturer": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1
     },
     "manufactureDate": {
       "type": "string",

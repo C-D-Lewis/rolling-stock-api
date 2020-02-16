@@ -6,7 +6,7 @@ import React from 'react';
  * @param {Object} props - Component props.
  * @returns {HTMLElement}
  */
-const Select = ({ value, width = 250, options, onChange }) =>
+const Select = ({ value, options, onChange, width = 250 }) =>
   <select
     value={value}
     onChange={event => onChange(event.target.value)}

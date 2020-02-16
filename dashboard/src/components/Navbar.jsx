@@ -12,20 +12,16 @@ export const NAVBAR_HEIGHT = 70;
  * @param {Object} props - Component props.
  * @returns {HTMLElement}
  */
-export const Navbar = ({ children }) => {
-  const style = {
+export const Navbar = ({ children }) =>
+  <div style={{
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     width: '100%',
     height: NAVBAR_HEIGHT,
     backgroundColor: Colors.Navbar.background,
-    // boxShadow: '-2px 3px 3px 4px #1113',
     zIndex: 999,
-  };
-
-  return <div style={style}>{children}</div>;
-};
+  }}>{children}</div>;
 
 /**
  * NavbarLogo component.
@@ -33,11 +29,11 @@ export const Navbar = ({ children }) => {
  * @param {Object} props - Component props.
  * @returns {HTMLElement}
  */
-export const NavbarLogo = () => {
-  const style = { width: 36, marginLeft: 10 };
-
-  return <Image src={Images.logo} restyle={style}/>
-};
+export const NavbarLogo = () =>
+  <Image src={Images.logo} restyle={{
+    width: 36,
+    marginLeft: 10,
+  }}/>;
 
 /**
  * NavbarTitle component.
@@ -45,13 +41,10 @@ export const NavbarLogo = () => {
  * @param {Object} props - Component props.
  * @returns {HTMLElement}
  */
-export const NavbarTitle = ({ children }) => {
-  const style = {
+export const NavbarTitle = ({ children }) =>
+  <Text restyle={{
     fontSize: 24,
     fontWeight: 'bold',
     color: 'white',
     marginLeft: 10,
-  };
-
-  return <Text restyle={style}>{children}</Text>;
-};
+  }}>{children}</Text>;

@@ -24,6 +24,11 @@ const TYPES = [
 ];
 const TYPE_OPTIONS = TYPES.map(p => ({ name: p.charAt(0).toUpperCase() + p.slice(1), value: p }));
 
+/**
+ * Create resource page component.
+ *
+ * @returns {HTMLElement}
+ */
 const CreatePage = () => {
   const ip = useSelector(state => state.ip);
 
@@ -32,18 +37,26 @@ const CreatePage = () => {
   const [unitNumber, setUnitNumber] = useState('');
   const [manufacturer, setManufacturer] = useState('');
 
+  /**
+   * Make the POST request to create a resource.
+   */
   const createResource = async () => {
     try {
-      const res = await fetch(`http://${ip}:${SERVICE_PORT}/rollingStock`, {
+      const resource = {
+        type,
+        'class': className,
+        unitNumber,
+        manufacturer,
+      };
+      const opts = {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type,
-          'class': className,
-          unitNumber,
-          manufacturer,
-        }),
-      });
+        body: JSON.stringify(resource),
+      };
+      const res = await fetch(`http://${ip}:${SERVICE_PORT}/rollingStock`, opts);
+      if (!res.ok) {
+        throw new Error(`Failed to create resource: ${res.statusText}`);
+      }
       const json = await res.json();
       console.log(json);
     } catch (e) {
