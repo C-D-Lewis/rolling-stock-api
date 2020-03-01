@@ -3,7 +3,7 @@ import { rootReducer } from './reducers';
 import BlankPage from './pages/BlankPage.jsx';
 
 const INITIAL_STATE = {
-  ip: '',
+  ip: 'localhost',
   currentPage: BlankPage,
 };
 

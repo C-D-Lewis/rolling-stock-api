@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Container from '../components/Container.jsx';
 import Fader from '../components/Fader.jsx';
-import Button from '../components/Button.jsx';
+import { Button, ButtonBar } from '../components/Button.jsx';
 import Title from '../components/Title.jsx';
 import Subtitle from '../components/Subtitle.jsx';
 import Text from '../components/Text.jsx';
@@ -96,10 +96,10 @@ const CreatePage = () => {
               <Input value={manufacturer} onChange={setManufacturer}/>
             </Row>
           </Container>
+          <ButtonBar>
+            <Button disabled={inProgress} onClick={createResource}>Create</Button>
+          </ButtonBar>
         </Card>
-        <Container restyle={{ flexDirection: 'row', marginTop: 15, }}>
-          <Button disabled={inProgress} onClick={createResource}>Create</Button>
-        </Container>
       </Container>
     </Fader>
   );

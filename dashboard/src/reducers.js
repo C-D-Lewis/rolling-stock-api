@@ -6,7 +6,7 @@ const buildReducer = (firstValue, subreducers) => (state = firstValue, action) =
       : state;
 
 export const rootReducer = combineReducers({
-  ip: buildReducer('', {
+  ip: buildReducer('localhost', {
     SET_IP: (state, { ip }) => ip,
   }),
   currentPage: buildReducer('', {

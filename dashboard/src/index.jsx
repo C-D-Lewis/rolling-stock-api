@@ -9,7 +9,6 @@ import store from './store';
 import Container from './components/Container.jsx';
 import Text from './components/Text.jsx';
 import Input from './components/Input.jsx';
-import Button from './components/Button.jsx';
 import BlankPage from './pages/BlankPage.jsx';
 import OverviewPage from './pages/OverviewPage.jsx';
 import CreatePage from './pages/CreatePage.jsx';

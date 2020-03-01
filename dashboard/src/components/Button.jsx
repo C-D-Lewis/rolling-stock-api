@@ -1,5 +1,22 @@
 import React from 'react';
 import { Colors, Styles } from '../theme';
+import Container from './Container.jsx';
+
+/**
+ * A padded bar for buttons.
+ *
+ * @param {Object} props - Component props.
+ * @returns {HTMLElement}
+ */
+export const ButtonBar = ({ children  }) =>
+  <Container
+    restyle={{
+      flexDirection: 'row',
+      marginTop: 15,
+      justifyContent: 'flex-end',
+    }}>
+    {children}
+  </Container>;
 
 /**
  * Button component.
@@ -7,7 +24,7 @@ import { Colors, Styles } from '../theme';
  * @param {Object} props - Component props.
  * @returns {HTMLElement}
  */
-const Button = ({ children, disabled = false, onClick }) =>
+export const Button = ({ children, disabled = false, onClick }) =>
   <div
     className="button"
     onClick={() => disabled ? () => {} : onClick()}
@@ -22,5 +39,3 @@ const Button = ({ children, disabled = false, onClick }) =>
     }}>
     {children}
   </div>;
-
-export default Button;

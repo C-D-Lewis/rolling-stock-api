@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Container from '../components/Container.jsx';
-import Button from '../components/Button.jsx';
+import { Button } from '../components/Button.jsx';
 import Card from '../components/Card.jsx';
 import Fader from '../components/Fader.jsx';
 import Input from '../components/Input.jsx';
@@ -39,7 +39,7 @@ const FindPage = () => {
       <Container restyle={{ padding: 20 }}>
         <Title>Find Rolling Stock</Title>
         <Subtitle>Use this page to search for an existing Rolling Stock resource.</Subtitle>
-        <Card title="Search Query" subtitle="Enter part or all of a unit number or class">
+        <Card title="Search Query">
           <Container>
             <Row>
               <RowLabel>Query</RowLabel>

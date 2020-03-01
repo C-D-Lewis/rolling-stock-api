@@ -27,14 +27,16 @@ const Card = ({ children, title, subtitle }) =>
       }}>
       {title}
     </Text>
-    <Text
-      restyle={{
-        fontSize: '1.0rem',
-        color: Colors.subtitle,
-        marginBottom: 10,
-      }}>
-      {subtitle}
-    </Text>
+    {subtitle !== undefined && (
+      <Text
+        restyle={{
+          fontSize: '1.0rem',
+          color: Colors.subtitle,
+          marginBottom: 10,
+        }}>
+        {subtitle}
+      </Text>
+    )}
     {children}
   </Container>;
 
