@@ -10,6 +10,7 @@ const Input = ({ value, width = 250, onChange, restyle }) => {
   const style = Object.assign({
     fontSize: '1rem',
     border: 'none',
+    flex: 2,
     borderBottom: '2px solid #ddd',
     backgroundColor: '#0000',
     outline: 'none',

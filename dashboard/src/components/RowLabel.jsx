@@ -12,7 +12,7 @@ const RowLabel = ({ children }) =>
     restyle={{
       fontWeight: 'bold',
       fontSize: '1rem',
-      width: 120,
+      flex: 1,
       alignItems: 'center',
     }}>
     {children}

@@ -52,10 +52,14 @@ const Dashboard = () => {
       <Navbar>
         <NavbarLogo/>
         <NavbarTitle>Rolling Stock API Dashboard</NavbarTitle>
-        <Input value={ip}
+        <Input
+          value={ip}
           onChange={ip => dispatch(setIp(ip))}
-          restyle={{ marginLeft: 20, color: Colors.Navbar.foreground }}
-        />
+          restyle={{
+            marginLeft: 20,
+            color: Colors.Navbar.foreground,
+            maxWidth: 200,
+          }}/>
       </Navbar>
       <Container restyle={{ flexDirection: 'row', height: '100%' }}>
         <Sidebar>

@@ -15,6 +15,7 @@ const Select = ({ value, options, onChange, width = 250 }) =>
       border: 'none',
       borderBottom: '2px solid #ddd',
       outline: 'none',
+      flex: 2,
       padding: '5px 0px',
     }}>
     {options.map(({ name, value }) => <option key={value} value={value}>{name}</option>)}
