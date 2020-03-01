@@ -3,6 +3,12 @@ import store from '../store';
 /** Port where the service is located. TODO: Put in config. */
 const SERVICE_PORT = 8000;
 
+/**
+ * Create a resource.
+ *
+ * @param {Object} json - Resource to create.
+ * @returns {Promise<Object>} Resource created.
+ */
 export const createResource = async (json) => {
   const { ip } = store.getState();
 

@@ -51,7 +51,7 @@ const CreatePage = () => {
         unitNumber,
         manufacturer,
       };
-      createResource(resource);
+      await createResource(resource);
     } catch (e) {
       alert(e);
     }
