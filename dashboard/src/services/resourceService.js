@@ -24,3 +24,20 @@ export const createResource = async (json) => {
 
   return await res.json();
 };
+
+/**
+ * Find one or more resources.
+ *
+ * @param {Object} query - Query string.
+ * @returns {Promise<Object[]>} Resources found.
+ */
+export const findResources = async (json) => {
+  const { ip } = store.getState();
+
+  const res = await fetch(`http://${ip}:${SERVICE_PORT}/rollingStock`);
+  if (!res.ok) {
+    throw new Error(`Failed to create resource: ${res.statusText}`);
+  }
+
+  return await res.json();
+};

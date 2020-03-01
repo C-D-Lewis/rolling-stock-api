@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import Container from '../components/Container.jsx';
 import { Button } from '../components/Button.jsx';
+import { findResources } from '../services/resourceService';
+import Container from '../components/Container.jsx';
 import Card from '../components/Card.jsx';
 import Fader from '../components/Fader.jsx';
 import Input from '../components/Input.jsx';
@@ -23,13 +24,14 @@ const FindPage = () => {
   /**
    * Perform search using the current query.
    */
-  const performSearch = () => {
+  const performSearch = async () => {
     setInProgress(true);
 
     try {
-
+      const json = await findResources(query);
+      setResults(json);
     } catch (error) {
-
+      alert(`Error searching; ${error.message}`);
     }
 
     setInProgress(false);
@@ -53,6 +55,7 @@ const FindPage = () => {
         <Card title="Search Results">
           <Container>
             {results.length === 0 && <Text>Nothing yet.</Text>}
+            {results.length && results.map(item => <Text>{item.unitNumber}</Text>)}
           </Container>
         </Card>
       </Container>
