@@ -19,5 +19,5 @@ export const Images = {
 };
 
 export const Styles = {
-  boxShadow: '2px 2px 2px 0.5px #999',
+  boxShadow: '2px 2px 2px 0.5px #4444',
 };

@@ -22,13 +22,16 @@ import FindPage from './pages/FindPage.jsx';
  * @returns {HTMLElement}
  */
 const RootContainer = ({ children }) =>
-  <Container restyle={{
-    width: '100%',
-    height: '100%',
-    margin: 0,
-    padding: 0,
-    backgroundColor: Colors.background,
-  }}>{children}</Container>;
+  <Container
+    restyle={{
+      width: '100%',
+      height: '100%',
+      margin: 0,
+      padding: 0,
+      backgroundColor: Colors.background,
+    }}>
+    {children}
+  </Container>;
 
 /**
  * Main Dashboard component.
@@ -72,7 +75,7 @@ const Dashboard = () => {
             Find Existing
           </SidebarMenuItem>
         </Sidebar>
-        <Container restyle={{ width: '100%' }}>
+        <Container>
           <CurrentPage/>
         </Container>
       </Container>

@@ -7,7 +7,7 @@ import React from 'react';
  * @returns {HTMLElement}
  */
 const Text = ({ children, restyle }) => {
-  const style = Object.assign({ fontSize: 18 }, restyle);
+  const style = Object.assign({ display: 'flex', fontSize: 18 }, restyle);
 
   return <div style={style}>{children}</div>;
 };

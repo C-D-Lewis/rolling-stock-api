@@ -14,6 +14,7 @@ const Input = ({ value, width = 250, onChange, restyle }) => {
     backgroundColor: '#0000',
     outline: 'none',
     padding: '5px 0px',
+    marginRight: 10,
   }, restyle);
 
   return (

@@ -13,6 +13,7 @@ const RowLabel = ({ children }) =>
       fontWeight: 'bold',
       fontSize: '1rem',
       width: 120,
+      alignItems: 'center',
     }}>
     {children}
   </Text>;
