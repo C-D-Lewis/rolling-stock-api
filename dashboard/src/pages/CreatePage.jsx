@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import Container from '../components/Container.jsx';
 import Fader from '../components/Fader.jsx';
 import { Button, ButtonBar } from '../components/Button.jsx';
+import { createResource } from '../services/resourceService';
 import Title from '../components/Title.jsx';
 import Subtitle from '../components/Subtitle.jsx';
 import Text from '../components/Text.jsx';
@@ -12,8 +13,6 @@ import Row from '../components/Row.jsx';
 import Input from '../components/Input.jsx';
 import Select from '../components/Select.jsx';
 
-/** Port where the service is located. TODO: Put in config. */
-const SERVICE_PORT = 8000;
 /** Types of rolling stock available. TOOD: Use same schema */
 const TYPES = [
   'diesel',
@@ -42,7 +41,7 @@ const CreatePage = () => {
   /**
    * Make the POST request to create a resource.
    */
-  const createResource = async () => {
+  const performCreate = async () => {
     setInProgress(true);
 
     try {
@@ -52,17 +51,7 @@ const CreatePage = () => {
         unitNumber,
         manufacturer,
       };
-      const opts = {
-        method: 'post',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(resource),
-      };
-      const res = await fetch(`http://${ip}:${SERVICE_PORT}/rollingStock`, opts);
-      if (!res.ok) {
-        throw new Error(`Failed to create resource: ${res.statusText}`);
-      }
-      const json = await res.json();
-      console.log(json);
+      createResource(resource);
     } catch (e) {
       alert(e);
     }
@@ -97,7 +86,7 @@ const CreatePage = () => {
             </Row>
           </Container>
           <ButtonBar>
-            <Button disabled={inProgress} onClick={createResource}>Create</Button>
+            <Button disabled={inProgress} onClick={performCreate}>Create</Button>
           </ButtonBar>
         </Card>
       </Container>

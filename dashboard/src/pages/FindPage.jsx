@@ -8,6 +8,7 @@ import Row from '../components/Row.jsx';
 import RowLabel from '../components/RowLabel.jsx';
 import Subtitle from '../components/Subtitle.jsx';
 import Title from '../components/Title.jsx';
+import Text from '../components/Text.jsx';
 
 /**
  * Find resource page component.
@@ -46,6 +47,12 @@ const FindPage = () => {
               <Input value={query} onChange={setQuery}/>
               <Button disabled={inProgress} onClick={performSearch}>Search</Button>
             </Row>
+          </Container>
+        </Card>
+
+        <Card title="Search Results">
+          <Container>
+            {results.length === 0 && <Text>Nothing yet.</Text>}
           </Container>
         </Card>
       </Container>
