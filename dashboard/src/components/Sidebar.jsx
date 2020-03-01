@@ -7,13 +7,16 @@ import React from 'react';
  * @returns {HTMLElement}
  */
 export const Sidebar = ({ children }) =>
-  <div style={{
-    backgroundColor: 'white',
-    width: 250,
-    height: '100%',
-    borderRight: 'solid 1px #1114',
-    zIndex: 999,
-  }}>{children}</div>;
+  <div
+    style={{
+      backgroundColor: 'white',
+      width: 250,
+      height: '100%',
+      borderRight: 'solid 1px #1114',
+      zIndex: 999,
+    }}>
+    {children}
+  </div>;
 
 /**
  * SidebarMenuItem component.
@@ -34,7 +37,7 @@ export const SidebarMenuItem = ({ children, onClick, selected }) =>
       cursor: 'pointer',
       alignItems: 'center',
       backgroundColor: selected ? '#ddd' : 'white',
-  }}>
+    }}>
     <div style={{ paddingLeft: 10 }}>
       {children}
     </div>

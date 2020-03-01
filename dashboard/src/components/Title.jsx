@@ -9,10 +9,13 @@ import Text from './Text.jsx';
  * @returns {HTMLElement}
  */
 const Title = ({ children }) =>
-  <Text restyle={{
-    fontSize: '2rem',
-    fontWeight: 'bold',
-    color: Colors.title,
-  }}>{children}</Text>;
+  <Text
+    restyle={{
+      fontSize: '2rem',
+      fontWeight: 'bold',
+      color: Colors.title,
+    }}>
+    {children}
+  </Text>;
 
 export default Title;

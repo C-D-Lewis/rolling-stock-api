@@ -13,13 +13,16 @@ const Fader = ({ children }) => {
     setTimeout(() => setVisible(true), 0);
   }, []);
 
-  const style = {
-    opacity: visible ? 1 : 0,
-    visibility: visible ? 'visible' : 'hidden',
-    transition: '0.5s',
-  };
-
-  return <div style={style}>{children}</div>;
+  return (
+    <div
+      style={{
+        opacity: visible ? 1 : 0,
+        visibility: visible ? 'visible' : 'hidden',
+        transition: '0.5s',
+      }}>
+      {children}
+    </div>
+  );
 };
 
 export default Fader;

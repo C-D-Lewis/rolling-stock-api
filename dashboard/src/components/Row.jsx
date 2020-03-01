@@ -8,9 +8,12 @@ import Container from './Container.jsx';
  * @returns {HTMLElement}
  */
 const Row = ({ children }) =>
-  <Container restyle={{
-    flexDirection: 'row',
-    margin: '5px 0px',
-  }}>{children}</Container>;
+  <Container
+    restyle={{
+      flexDirection: 'row',
+      margin: '5px 0px',
+    }}>
+    {children}
+  </Container>;
 
 export default Row;

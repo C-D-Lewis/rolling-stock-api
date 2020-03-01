@@ -8,10 +8,13 @@ import Text from './Text.jsx';
  * @returns {HTMLElement}
  */
 const RowLabel = ({ children }) =>
-  <Text restyle={{
-    fontWeight: 'bold',
-    fontSize: '1rem',
-    width: 120,
-  }}>{children}</Text>;
+  <Text
+    restyle={{
+      fontWeight: 'bold',
+      fontSize: '1rem',
+      width: 120,
+    }}>
+    {children}
+  </Text>;
 
 export default RowLabel;

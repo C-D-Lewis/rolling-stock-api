@@ -12,7 +12,9 @@ import Row from '../components/Row.jsx';
 import Input from '../components/Input.jsx';
 import Select from '../components/Select.jsx';
 
+/** Port where the service is located. TODO: Put in config. */
 const SERVICE_PORT = 8000;
+/** Types of rolling stock available. TOOD: Use same schema */
 const TYPES = [
   'diesel',
   'electric',
@@ -22,7 +24,6 @@ const TYPES = [
   'emu',
   'dmu'
 ];
-const TYPE_OPTIONS = TYPES.map(p => ({ name: p.charAt(0).toUpperCase() + p.slice(1), value: p }));
 
 /**
  * Create resource page component.
@@ -36,11 +37,14 @@ const CreatePage = () => {
   const [className, setClassName] = useState('');
   const [unitNumber, setUnitNumber] = useState('');
   const [manufacturer, setManufacturer] = useState('');
+  const [inProgress, setInProgress] = useState(false);
 
   /**
    * Make the POST request to create a resource.
    */
   const createResource = async () => {
+    setInProgress(true);
+
     try {
       const resource = {
         type,
@@ -62,7 +66,11 @@ const CreatePage = () => {
     } catch (e) {
       alert(e);
     }
+
+    setInProgress(false);
   };
+
+  const typeOptions = TYPES.map(p => ({ name: p.charAt(0).toUpperCase() + p.slice(1), value: p }));
 
   return (
     <Fader>
@@ -73,7 +81,7 @@ const CreatePage = () => {
           <Container>
             <Row>
               <RowLabel>Type</RowLabel>
-              <Select value={type} onChange={setType} options={TYPE_OPTIONS}/>
+              <Select value={type} onChange={setType} options={typeOptions}/>
             </Row>
             <Row>
               <RowLabel>Class</RowLabel>
@@ -90,7 +98,7 @@ const CreatePage = () => {
           </Container>
         </Card>
         <Container restyle={{ flexDirection: 'row', marginTop: 15, }}>
-          <Button onClick={createResource}>Create</Button>
+          <Button disabled={inProgress} onClick={createResource}>Create</Button>
         </Container>
       </Container>
     </Fader>
