@@ -20,14 +20,16 @@ const Card = ({ children, title, subtitle, style }) =>
       boxShadow: Styles.boxShadow,
       ...style,
     }}>
-    <Text
-      style={{
-        fontSize: '1.3rem',
-        color: Colors.title,
-        marginBottom: 5,
-      }}>
-      {title}
-    </Text>
+    {title !== undefined && (
+      <Text
+        style={{
+          fontSize: '1.3rem',
+          color: Colors.title,
+          marginBottom: 5,
+        }}>
+        {title}
+      </Text>
+    )}
     {subtitle !== undefined && (
       <Text
         style={{
