@@ -39,10 +39,10 @@ const FindPage = () => {
 
   return (
     <Fader>
-      <Container restyle={{ padding: 20 }}>
+      <Container style={{ padding: 20 }}>
         <Title>Find Rolling Stock</Title>
         <Subtitle>Use this page to search for an existing Rolling Stock resource.</Subtitle>
-        <Card title="Search Query">
+        <Card title="Search Query" subtitle="Search by unit number." style={{ maxWidth: 500 }}>
           <Container>
             <Row>
               <RowLabel>Query</RowLabel>

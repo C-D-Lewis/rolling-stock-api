@@ -9,7 +9,7 @@ import Container from './Container.jsx';
  */
 const Row = ({ children }) =>
   <Container
-    restyle={{
+    style={{
       flexDirection: 'row',
       margin: '5px 0px',
     }}>

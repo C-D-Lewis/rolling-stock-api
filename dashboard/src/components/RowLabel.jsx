@@ -9,7 +9,7 @@ import Text from './Text.jsx';
  */
 const RowLabel = ({ children }) =>
   <Text
-    restyle={{
+    style={{
       fontWeight: 'bold',
       fontSize: '1rem',
       flex: 1,

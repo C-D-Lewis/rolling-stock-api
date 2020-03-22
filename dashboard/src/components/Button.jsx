@@ -10,7 +10,7 @@ import Container from './Container.jsx';
  */
 export const ButtonBar = ({ children  }) =>
   <Container
-    restyle={{
+    style={{
       flexDirection: 'row',
       marginTop: 15,
       justifyContent: 'flex-end',

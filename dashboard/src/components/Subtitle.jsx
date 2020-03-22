@@ -10,7 +10,7 @@ import Text from './Text.jsx';
  */
 const Subtitle = ({ children }) =>
   <Text
-    restyle={{
+    style={{
       fontSize: '1.1rem',
       color: Colors.subtitle,
       marginTop: 10,

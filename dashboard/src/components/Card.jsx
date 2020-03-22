@@ -9,18 +9,19 @@ import Text from './Text.jsx';
  * @param {Object} props - Component props.
  * @returns {HTMLElement}
  */
-const Card = ({ children, title, subtitle }) =>
+const Card = ({ children, title, subtitle, style }) =>
   <Container
-    restyle={{
+    style={{
       background: 'white',
       border: '1px solid #1113',
       borderRadius: 5,
       padding: 10,
       marginTop: 15,
       boxShadow: Styles.boxShadow,
+      ...style,
     }}>
     <Text
-      restyle={{
+      style={{
         fontSize: '1.3rem',
         color: Colors.title,
         marginBottom: 5,
@@ -29,7 +30,7 @@ const Card = ({ children, title, subtitle }) =>
     </Text>
     {subtitle !== undefined && (
       <Text
-        restyle={{
+        style={{
           fontSize: '1.0rem',
           color: Colors.subtitle,
           marginBottom: 10,

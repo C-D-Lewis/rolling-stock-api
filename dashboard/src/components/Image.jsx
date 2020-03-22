@@ -6,13 +6,14 @@ import React from 'react';
  * @param {Object} props - Component props.
  * @returns {HTMLElement}
  */
-const Image = ({ restyle, src }) => {
-  const style = Object.assign({
-    width: 48,
-    height: 'auto',
-  }, restyle);
-
-  return <img style={style} src={src}/>;
-};
+const Image = ({ style, src }) =>
+  <img
+    style={{
+      width: 48,
+      height: 'auto',
+      ...style,
+    }}
+    src={src}
+  />;
 
 export default Image;

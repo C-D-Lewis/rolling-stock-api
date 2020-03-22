@@ -31,7 +31,7 @@ export const createResource = async (json) => {
  * @param {Object} query - Query string.
  * @returns {Promise<Object[]>} Resources found.
  */
-export const findResources = async (json) => {
+export const findResources = async (query) => {
   const { ip } = store.getState();
 
   const res = await fetch(`http://${ip}:${SERVICE_PORT}/rollingStock`);

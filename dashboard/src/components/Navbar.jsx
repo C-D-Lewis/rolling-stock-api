@@ -35,7 +35,7 @@ export const Navbar = ({ children }) =>
 export const NavbarLogo = () =>
   <Image
     src={Images.logo}
-    restyle={{
+    style={{
       width: 36,
       marginLeft: 10,
     }}/>;
@@ -48,7 +48,7 @@ export const NavbarLogo = () =>
  */
 export const NavbarTitle = ({ children }) =>
   <Text
-    restyle={{
+    style={{
       fontSize: 24,
       fontWeight: 'bold',
       color: 'white',

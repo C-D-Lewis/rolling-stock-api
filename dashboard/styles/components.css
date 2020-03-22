@@ -3,6 +3,10 @@
   font-weight: bold;
 }
 
+.listItem:hover {
+  background-color: #ddd;
+}
+
 .button:hover {
   filter: brightness(1.1);
 }

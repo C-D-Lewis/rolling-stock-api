@@ -6,13 +6,15 @@ import React from 'react';
  * @param {Object} props - Component props.
  * @returns {HTMLElement}
  */
-const Container = ({ children, restyle }) => {
-  const style = Object.assign({
-    display: 'flex',
-    flexDirection: 'column',
-  }, restyle);
-
-  return <div style={style}>{children}</div>;
-};
+const Container = ({ children, style, ...rest }) =>
+  <div
+    style={{
+      display: 'flex',
+      flexDirection: 'column',
+      ...style,
+    }}
+    {...rest}>
+    {children}
+  </div>;
 
 export default Container;

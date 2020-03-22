@@ -10,7 +10,7 @@ import Container from './components/Container.jsx';
 import Text from './components/Text.jsx';
 import Input from './components/Input.jsx';
 import BlankPage from './pages/BlankPage.jsx';
-import OverviewPage from './pages/OverviewPage.jsx';
+import RecentPage from './pages/RecentPage.jsx';
 import CreatePage from './pages/CreatePage.jsx';
 import FindPage from './pages/FindPage.jsx';
 
@@ -22,7 +22,7 @@ import FindPage from './pages/FindPage.jsx';
  */
 const RootContainer = ({ children }) =>
   <Container
-    restyle={{
+    style={{
       width: '100%',
       height: '100%',
       margin: 0,
@@ -42,7 +42,7 @@ const Dashboard = () => {
   const currentPage = useSelector(state => state.currentPage);
 
   useEffect(() => {
-    dispatch(setCurrentPage(OverviewPage));
+    dispatch(setCurrentPage(RecentPage));
   }, []);
 
   const CurrentPage = currentPage;
@@ -54,18 +54,18 @@ const Dashboard = () => {
         <Input
           value={ip}
           onChange={ip => dispatch(setIp(ip))}
-          restyle={{
+          style={{
             marginLeft: 20,
             color: Colors.Navbar.foreground,
             maxWidth: 200,
           }}/>
       </Navbar>
-      <Container restyle={{ flexDirection: 'row', height: '100%' }}>
+      <Container style={{ flexDirection: 'row', height: '100%' }}>
         <Sidebar>
           <SidebarMenuItem
-            selected={currentPage === OverviewPage}
-            onClick={() => dispatch(setCurrentPage(OverviewPage))}>
-            Overview
+            selected={currentPage === RecentPage}
+            onClick={() => dispatch(setCurrentPage(RecentPage))}>
+            Recent
           </SidebarMenuItem>
           <SidebarMenuItem
             selected={currentPage === CreatePage}
@@ -78,7 +78,7 @@ const Dashboard = () => {
             Find Existing
           </SidebarMenuItem>
         </Sidebar>
-        <Container>
+        <Container style={{ width: '100%' }}>
           <CurrentPage/>
         </Container>
       </Container>

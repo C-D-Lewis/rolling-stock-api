@@ -63,10 +63,10 @@ const CreatePage = () => {
 
   return (
     <Fader>
-      <Container restyle={{ padding: 20 }}>
+      <Container style={{ padding: 20 }}>
         <Title>Create Rolling Stock</Title>
         <Subtitle>Use this page to create a new Rolling Stock resource.</Subtitle>
-        <Card title="Details" subtitle="Basic details of the Rolling Stock resource">
+        <Card title="Details" subtitle="Basic details of the Rolling Stock resource" style={{ maxWidth: 500 }}>
           <Container>
             <Row>
               <RowLabel>Type</RowLabel>
