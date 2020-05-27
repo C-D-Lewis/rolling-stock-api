@@ -11,7 +11,7 @@ import Text from './Text.jsx';
 const Title = ({ children }) =>
   <Text
     style={{
-      fontSize: '2rem',
+      fontSize: '1.5rem',
       fontWeight: 'bold',
       color: Colors.title,
     }}>

@@ -9,11 +9,11 @@ import React from 'react';
 export const Sidebar = ({ children }) =>
   <div
     style={{
-      backgroundColor: 'white',
+      backgroundColor: '#eee',
       width: 250,
-      height: '100%',
       borderRight: 'solid 1px #1114',
       zIndex: 999,
+      height: '100%',
     }}>
     {children}
   </div>;

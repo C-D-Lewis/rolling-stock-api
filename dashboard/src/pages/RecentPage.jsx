@@ -41,6 +41,14 @@ const ListItem = ({ data }) =>
         color: Colors.subtitle,
         flex: 1,
       }}>
+      {data.type}
+    </Text>
+    <Text
+      style={{
+        fontSize: '0.9rem',
+        color: Colors.subtitle,
+        flex: 1,
+      }}>
       {data.manufacturer}
     </Text>
     <Text
@@ -50,6 +58,14 @@ const ListItem = ({ data }) =>
         flex: 1,
       }}>
       {data.operator}
+    </Text>
+    <Text
+      style={{
+        fontSize: '0.9rem',
+        color: Colors.subtitle,
+        flex: 1,
+      }}>
+      {new Date(data.createdAt).toDateString()}
     </Text>
   </Container>;
 
@@ -67,7 +83,7 @@ const RecentPage = () => {
   const loadRecentItems = async () => {
     try {
       const items = await findResources();
-      setItems(items);
+      setItems(items.sort((a, b) => b.createdAt < a.createdAt ? -1 : 1));
     } catch (e) {
       console.log(e);
       alert(e);

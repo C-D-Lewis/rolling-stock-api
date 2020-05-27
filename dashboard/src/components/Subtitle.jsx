@@ -11,7 +11,7 @@ import Text from './Text.jsx';
 const Subtitle = ({ children }) =>
   <Text
     style={{
-      fontSize: '1.1rem',
+      fontSize: '1rem',
       color: Colors.subtitle,
       marginTop: 10,
     }}>

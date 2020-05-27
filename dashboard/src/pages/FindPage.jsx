@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Button } from '../components/Button.jsx';
 import { findResources } from '../services/resourceService';
 import Container from '../components/Container.jsx';
-import Card from '../components/Card.jsx';
 import Fader from '../components/Fader.jsx';
 import Input from '../components/Input.jsx';
 import Row from '../components/Row.jsx';
@@ -42,22 +41,18 @@ const FindPage = () => {
       <Container style={{ padding: 20 }}>
         <Title>Find Rolling Stock</Title>
         <Subtitle>Use this page to search for an existing Rolling Stock resource.</Subtitle>
-        <Card title="Search Query" subtitle="Search by unit number." style={{ maxWidth: 500 }}>
-          <Container>
-            <Row>
-              <RowLabel>Query</RowLabel>
-              <Input value={query} onChange={setQuery}/>
-              <Button disabled={inProgress} onClick={performSearch}>Search</Button>
-            </Row>
-          </Container>
-        </Card>
+        <Container style={{ maxWidth: 500 }}>
+          <Row>
+            <RowLabel>Query</RowLabel>
+            <Input value={query} onChange={setQuery}/>
+            <Button disabled={inProgress} onClick={performSearch}>Search</Button>
+          </Row>
+        </Container>
 
-        <Card title="Search Results">
-          <Container>
-            {results.length === 0 && <Text>Nothing yet.</Text>}
-            {results.length && results.map(item => <Text>{item.unitNumber}</Text>)}
-          </Container>
-        </Card>
+        <Container style={{ marginTop: 50 }}>
+          {results.length === 0 && <Text>Nothing yet.</Text>}
+          {results.length > 0 && results.map(item => <Text>{item.unitNumber}</Text>)}
+        </Container>
       </Container>
     </Fader>
   );

@@ -27,7 +27,7 @@ const RootContainer = ({ children }) =>
       margin: 0,
       padding: 0,
       backgroundColor: Colors.background,
-      minHeight: '100%',
+      height: '100%',
       flex: 1,
     }}>
     {children}

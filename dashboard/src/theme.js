@@ -1,6 +1,6 @@
 /** Theme colors */
 export const Colors = {
-  background: '#eee',
+  background: '#fff',
   title: '#222',
   subtitle: '#666',
   Navbar: {

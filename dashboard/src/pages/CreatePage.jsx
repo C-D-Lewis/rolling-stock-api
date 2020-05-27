@@ -7,7 +7,6 @@ import { createResource } from '../services/resourceService';
 import Title from '../components/Title.jsx';
 import Subtitle from '../components/Subtitle.jsx';
 import Text from '../components/Text.jsx';
-import Card from '../components/Card.jsx';
 import RowLabel from '../components/RowLabel.jsx';
 import Row from '../components/Row.jsx';
 import Input from '../components/Input.jsx';
@@ -63,32 +62,30 @@ const CreatePage = () => {
 
   return (
     <Fader>
-      <Container style={{ padding: 20 }}>
+      <Container style={{ padding: 20, maxWidth: 500 }}>
         <Title>Create Rolling Stock</Title>
         <Subtitle>Use this page to create a new Rolling Stock resource.</Subtitle>
-        <Card title="Details" subtitle="Basic details of the Rolling Stock resource" style={{ maxWidth: 500 }}>
-          <Container>
-            <Row>
-              <RowLabel>Type</RowLabel>
-              <Select value={type} onChange={setType} options={typeOptions}/>
-            </Row>
-            <Row>
-              <RowLabel>Class</RowLabel>
-              <Input value={className} onChange={setClassName}/>
-            </Row>
-            <Row>
-              <RowLabel>Unit Number</RowLabel>
-              <Input value={unitNumber} onChange={setUnitNumber}/>
-            </Row>
-            <Row>
-              <RowLabel>Manufacturer</RowLabel>
-              <Input value={manufacturer} onChange={setManufacturer}/>
-            </Row>
-          </Container>
-          <ButtonBar>
-            <Button disabled={inProgress} onClick={performCreate}>Create</Button>
-          </ButtonBar>
-        </Card>
+        <Container style={{ marginTop: 30 }}>
+          <Row>
+            <RowLabel>Type</RowLabel>
+            <Select value={type} onChange={setType} options={typeOptions}/>
+          </Row>
+          <Row>
+            <RowLabel>Class</RowLabel>
+            <Input value={className} onChange={setClassName}/>
+          </Row>
+          <Row>
+            <RowLabel>Unit Number</RowLabel>
+            <Input value={unitNumber} onChange={setUnitNumber}/>
+          </Row>
+          <Row>
+            <RowLabel>Manufacturer</RowLabel>
+            <Input value={manufacturer} onChange={setManufacturer}/>
+          </Row>
+        </Container>
+        <ButtonBar>
+          <Button disabled={inProgress} onClick={performCreate}>Create</Button>
+        </ButtonBar>
       </Container>
     </Fader>
   );

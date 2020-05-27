@@ -19,7 +19,7 @@ export const Navbar = ({ children }) =>
       flexDirection: 'row',
       alignItems: 'center',
       width: '100%',
-      height: NAVBAR_HEIGHT,
+      minHeight: NAVBAR_HEIGHT,
       backgroundColor: Colors.Navbar.background,
       zIndex: 999,
     }}>
@@ -53,6 +53,7 @@ export const NavbarTitle = ({ children }) =>
       fontWeight: 'bold',
       color: 'white',
       marginLeft: 10,
+      cursor: 'default',
     }}>
     {children}
   </Text>;
