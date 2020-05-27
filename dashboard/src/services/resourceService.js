@@ -36,7 +36,7 @@ export const findResources = async (query) => {
 
   const res = await fetch(`http://${ip}:${SERVICE_PORT}/rollingStock`);
   if (!res.ok) {
-    throw new Error(`Failed to create resource: ${res.statusText}`);
+    throw new Error(`Failed to find resources: ${res.statusText}`);
   }
 
   return await res.json();

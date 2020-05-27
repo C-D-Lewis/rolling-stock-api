@@ -90,9 +90,7 @@ const RecentPage = () => {
     }
   };
 
-  useEffect(() => {
-    loadRecentItems();
-  }, []);
+  useEffect(loadRecentItems, []);
 
   return (
     <Fader>

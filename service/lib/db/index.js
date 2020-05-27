@@ -7,7 +7,9 @@ const DB_NAME = 'RollingStockService';
 /** Default page size */
 const PAGE_SIZE = 16;
 
-const client = new MongoClient(MONGO_URL);
+const client = new MongoClient(MONGO_URL, {
+  useUnifiedTopology: true,
+});
 let db;
 
 /**
