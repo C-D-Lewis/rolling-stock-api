@@ -34,7 +34,6 @@ export const Button = ({ children, disabled = false, onClick }) =>
       borderRadius: 5,
       fontWeight: 'bold',
       padding: '10px 15px',
-      boxShadow: Styles.boxShadow,
       cursor: 'pointer',
     }}>
     {children}

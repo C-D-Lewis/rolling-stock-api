@@ -4,6 +4,8 @@ const { MongoClient } = require('mongodb');
 const MONGO_URL = 'mongodb://localhost:27017';
 /* Database Name */
 const DB_NAME = 'RollingStockService';
+/** Default page size */
+const PAGE_SIZE = 16;
 
 const client = new MongoClient(MONGO_URL);
 let db;
@@ -39,7 +41,7 @@ exports.insertOne = (name, doc) => db.collection(name).insertOne(doc);
  * @param {string} name - Collection name.
  * @param {Object} filter - Filter to use.
  */
-exports.find = (name, filter) => db.collection(name).find(filter).toArray();
+exports.find = (name, filter) => db.collection(name).find(filter).sort({ createdAt: -1 }).limit(PAGE_SIZE).toArray();
 
 /**
  * Update a document.
