@@ -133,7 +133,7 @@ components:
       name: rollingStockId
       in: path
       required: true
-      description: 'The ID of the rolling stock to retrieve'
+      description: 'The ID of the rolling stock'
       schema:
         type: string
   schemas:
@@ -183,4 +183,6 @@ components:
         serviceEndDate:
           type: string
           format: date
+        image:
+          type: string
   requestBodies: {}

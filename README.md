@@ -1,6 +1,6 @@
 # rolling-stock-api
 
-Full-stack project modelling management of railway stock inventory.
+Full-stack demo project modelling management of railway stock inventory.
 
 * `database` - Scripts and tools for MongoDB database.
 
