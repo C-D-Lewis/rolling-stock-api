@@ -9,6 +9,7 @@ import RowLabel from '../components/RowLabel.jsx';
 import Subtitle from '../components/Subtitle.jsx';
 import Title from '../components/Title.jsx';
 import Text from '../components/Text.jsx';
+import StockList from '../components/StockList.jsx';
 
 /**
  * Find resource page component.
@@ -41,7 +42,7 @@ const FindPage = () => {
       <Container style={{ padding: 20 }}>
         <Title>Find Rolling Stock</Title>
         <Subtitle>Use this page to search for an existing Rolling Stock resource.</Subtitle>
-        <Container style={{ maxWidth: 500 }}>
+        <Container style={{ maxWidth: 500, marginTop: 30 }}>
           <Row>
             <RowLabel>Query</RowLabel>
             <Input value={query} onChange={setQuery}/>
@@ -49,9 +50,9 @@ const FindPage = () => {
           </Row>
         </Container>
 
-        <Container style={{ marginTop: 50 }}>
+        <Container style={{ marginTop: 30 }}>
           {results.length === 0 && <Text>Nothing yet.</Text>}
-          {results.length > 0 && results.map(item => <Text>{item.unitNumber}</Text>)}
+          {results.length > 0 && <StockList items={results} />}
         </Container>
       </Container>
     </Fader>

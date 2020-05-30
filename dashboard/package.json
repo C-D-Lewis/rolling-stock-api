@@ -5,9 +5,8 @@
   "main": "webpack.config.js",
   "scripts": {
     "build": "webpack --mode production --config webpack.config.js",
-    "build-dev": "webpack --mode development --config webpack.config.js",
-    "start": "npm run build && python -m SimpleHTTPServer 8849",
-    "start-dev": "webpack-dev-server --mode development --config webpack.config.js"
+    "build:dev": "webpack --mode development --config webpack.config.js",
+    "start": "npm run build && python -m SimpleHTTPServer 8849"
   },
   "keywords": [],
   "author": "Chris Lewis",
