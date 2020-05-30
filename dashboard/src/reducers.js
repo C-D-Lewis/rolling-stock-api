@@ -19,4 +19,7 @@ export const rootReducer = combineReducers({
   currentPage: buildReducer('', {
     SET_CURRENT_PAGE: (state, { currentPage }) => currentPage,
   }),
+  currentResource: buildReducer({}, {
+    SET_CURRENT_RESOURCE: (state, { currentResource }) => currentResource,
+  }),
 });

@@ -19,3 +19,14 @@ export const setCurrentPage = currentPage => ({
   type: 'SET_CURRENT_PAGE',
   currentPage,
 });
+
+/**
+ * currentResource reducer.
+ *
+ * @param {string} currentResource - Current resource to show.
+ * @returns {Object} Action object.
+ */
+export const setCurrentResource = currentResource => ({
+  type: 'SET_CURRENT_RESOURCE',
+  currentResource,
+});

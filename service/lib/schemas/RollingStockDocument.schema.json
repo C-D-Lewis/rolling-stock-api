@@ -56,7 +56,11 @@
       "type": "string"
     },
     "inService": {
-      "type": "boolean"
+      "type": "string",
+      "enum": [
+        "true",
+        "false"
+      ]
     },
     "serviceStartDate": {
       "type": "string",

@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import Container from '../components/Container.jsx';
 import Fader from '../components/Fader.jsx';
 import { Button, ButtonBar } from '../components/Button.jsx';
-import { createResource } from '../services/resourceService';
-import { setCurrentResource, setCurrentPage } from '../actions';
+import { updateResource } from '../services/resourceService';
 import Title from '../components/Title.jsx';
 import Subtitle from '../components/Subtitle.jsx';
 import Text from '../components/Text.jsx';
@@ -12,7 +11,6 @@ import RowLabel from '../components/RowLabel.jsx';
 import Row from '../components/Row.jsx';
 import Input from '../components/Input.jsx';
 import Select from '../components/Select.jsx';
-import UpdatePage from './UpdatePage.jsx';
 
 /** Types of rolling stock available. TOOD: Use same schema */
 const TYPES = [
@@ -34,14 +32,13 @@ const TYPES = [
 const waitAsync = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 /**
- * Create resource page component.
+ * Update resource page component.
  *
  * @returns {HTMLElement}
  */
-const CreatePage = () => {
-  const dispatch = useDispatch();
-
+const UpdatePage = () => {
   const ip = useSelector(state => state.ip);
+  const currentResource = useSelector(state => state.currentResource);
 
   const [inProgress, setInProgress] = useState(false);
   const [type, setType] = useState(TYPES[0]);
@@ -58,13 +55,14 @@ const CreatePage = () => {
   /**
    * Make the POST request to create a resource.
    */
-  const performCreate = async () => {
+  const performUpdate = async () => {
     setInProgress(true);
 
     await waitAsync(300);
 
     try {
       const resource = {
+        id: currentResource.id,
         type,
         'class': className,
         unitNumber,
@@ -76,10 +74,7 @@ const CreatePage = () => {
         serviceEndDate,
         image,
       };
-      const response = await createResource(resource);
-
-      dispatch(setCurrentResource(response));
-      dispatch(setCurrentPage(UpdatePage));
+      await updateResource(resource);
     } catch (e) {
       alert(e);
     }
@@ -87,13 +82,27 @@ const CreatePage = () => {
     setInProgress(false);
   };
 
+  // When mounted, display item data
+  useEffect(() => {
+    setType(currentResource.type || '');
+    setClassName(currentResource.class || '');
+    setUnitNumber(currentResource.unitNumber || '');
+    setManufacturer(currentResource.manufacturer || '');
+    setManufactureDate(currentResource.manufactureDate || '');
+    setOperator(currentResource.operator || '');
+    setInService(currentResource.inService || '');
+    setServiceStartDate(currentResource.serviceStartDate || '');
+    setServiceEndDate(currentResource.serviceEndDate || '');
+    setImage(currentResource.image || '');
+  }, []);
+
   const typeOptions = TYPES.map(p => ({ name: p.charAt(0).toUpperCase() + p.slice(1), value: p }));
 
   return (
     <Fader>
       <Container style={{ padding: 20, maxWidth: 500 }}>
-        <Title>Create Rolling Stock</Title>
-        <Subtitle>Use this page to create a new Rolling Stock resource.</Subtitle>
+        <Title>Update Rolling Stock</Title>
+        <Subtitle>Use this page to update an existing Rolling Stock resource.</Subtitle>
         <Container style={{ marginTop: 30 }}>
           <Row>
             <RowLabel>Type</RowLabel>
@@ -137,11 +146,11 @@ const CreatePage = () => {
           </Row>
         </Container>
         <ButtonBar>
-          <Button disabled={inProgress} onClick={performCreate}>Create</Button>
+          <Button disabled={inProgress} onClick={performUpdate}>Update</Button>
         </ButtonBar>
       </Container>
     </Fader>
   );
 };
 
-export default CreatePage;
+export default UpdatePage;

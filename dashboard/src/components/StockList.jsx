@@ -1,5 +1,8 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Colors } from '../theme';
+import { setCurrentPage, setCurrentResource } from '../actions';
+import UpdatePage from '../pages/UpdatePage.jsx';
 import Container from './Container.jsx';
 import Text from './Text.jsx';
 
@@ -71,8 +74,9 @@ const ListHeader = (props) =>
  * @param {Object} props - Component props.
  * @returns {HTMLElement}
  */
-const ListItem = ({ item }) =>
+const ListItem = ({ item, onClick }) =>
   <Container
+    onClick={onClick}
     className="listItem"
     style={{
       flexDirection: 'row',
@@ -132,10 +136,23 @@ const ListItem = ({ item }) =>
     </Text>
   </Container>;
 
-const StockList = ({ items }) =>
-  <Container style={{ border: '1px solid #4444' }}>
-    <ListHeader />
-    {items.map(p => <ListItem key={p.unitNumber} item={p} />)}
-  </Container>
+const StockList = ({ items }) => {
+  const dispatch = useDispatch();
+
+  return (
+    <Container style={{ border: '1px solid #4444' }}>
+      <ListHeader />
+      {items.map(p => (
+        <ListItem
+          key={p.unitNumber}
+          item={p}
+          onClick={() => {
+            dispatch(setCurrentResource(p));
+            dispatch(setCurrentPage(UpdatePage));
+          }}/>
+      ))}
+    </Container>
+  );
+};
 
 export default StockList;

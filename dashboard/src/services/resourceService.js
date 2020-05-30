@@ -42,3 +42,25 @@ export const findResources = async (query) => {
 
   return await res.json();
 };
+
+/**
+ * Update a resource.
+ *
+ * @param {Object} json - Resource to update.
+ * @returns {Promise<Object>} Resource updated.
+ */
+export const updateResource = async (json) => {
+  const { ip } = store.getState();
+
+  const opts = {
+    method: 'put',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(json),
+  };
+  const res = await fetch(`http://${ip}:${SERVICE_PORT}/rollingStock/${json.id}`, opts);
+  if (!res.ok) {
+    throw new Error(`Failed to update resource: ${res.statusText}`);
+  }
+
+  return await res.json();
+};
