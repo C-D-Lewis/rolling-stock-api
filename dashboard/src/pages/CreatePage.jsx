@@ -24,6 +24,14 @@ const TYPES = [
 ];
 
 /**
+ * Asynchronous wait.
+ *
+ * @param {number} ms - Milliseconds to wait.
+ * @returns {Promise}
+ */
+const waitAsync = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+/**
  * Create resource page component.
  *
  * @returns {HTMLElement}
@@ -31,11 +39,17 @@ const TYPES = [
 const CreatePage = () => {
   const ip = useSelector(state => state.ip);
 
+  const [inProgress, setInProgress] = useState(false);
   const [type, setType] = useState(TYPES[0]);
   const [className, setClassName] = useState('');
   const [unitNumber, setUnitNumber] = useState('');
   const [manufacturer, setManufacturer] = useState('');
-  const [inProgress, setInProgress] = useState(false);
+  const [manufactureDate, setManufactureDate] = useState('1985-01-01');
+  const [operator, setOperator] = useState('');
+  const [inService, setInService] = useState(false);
+  const [serviceStartDate, setServiceStartDate] = useState('2020-01-01');
+  const [serviceEndDate, setServiceEndDate] = useState('2020-02-01');
+  const [image, setImage] = useState('');
 
   /**
    * Make the POST request to create a resource.
@@ -43,12 +57,20 @@ const CreatePage = () => {
   const performCreate = async () => {
     setInProgress(true);
 
+    await waitAsync(300);
+
     try {
       const resource = {
         type,
         'class': className,
         unitNumber,
         manufacturer,
+        manufactureDate,
+        operator,
+        inService,
+        serviceStartDate,
+        serviceEndDate,
+        image,
       };
       await createResource(resource);
     } catch (e) {
@@ -81,6 +103,30 @@ const CreatePage = () => {
           <Row>
             <RowLabel>Manufacturer</RowLabel>
             <Input value={manufacturer} onChange={setManufacturer}/>
+          </Row>
+          <Row>
+            <RowLabel>Manufacture Date</RowLabel>
+            <Input value={manufactureDate} onChange={setManufactureDate}/>
+          </Row>
+          <Row>
+            <RowLabel>Operator</RowLabel>
+            <Input value={operator} onChange={setOperator}/>
+          </Row>
+          <Row>
+            <RowLabel>In Service</RowLabel>
+            <Input value={inService} onChange={setInService}/>
+          </Row>
+          <Row>
+            <RowLabel>Service Start</RowLabel>
+            <Input value={serviceStartDate} onChange={setServiceStartDate}/>
+          </Row>
+          <Row>
+            <RowLabel>Service End</RowLabel>
+            <Input value={serviceEndDate} onChange={setServiceEndDate}/>
+          </Row>
+          <Row>
+            <RowLabel>Image</RowLabel>
+            <Input value={image} onChange={setImage}/>
           </Row>
         </Container>
         <ButtonBar>

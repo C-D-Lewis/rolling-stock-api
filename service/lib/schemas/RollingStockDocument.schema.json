@@ -65,6 +65,10 @@
     "serviceEndDate": {
       "type": "string",
       "format": "date"
+    },
+    "image": {
+      "type": "string",
+      "format": "uri"
     }
   }
 }

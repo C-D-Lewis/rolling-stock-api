@@ -61,7 +61,7 @@ const ListHeader = (props) =>
         fontSize: '1rem',
         flex: 1,
       }}>
-      Created
+      Registered
     </Text>
   </Container>;
 
