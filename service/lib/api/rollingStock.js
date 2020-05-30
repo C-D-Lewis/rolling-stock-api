@@ -1,9 +1,9 @@
 const {
-  create,
-  find,
-  replace,
-  del,
-  validate,
+  createRollingStock,
+  findRollingStock,
+  replaceRollingStock,
+  deleteRollingStock,
+  validateRollingStock,
 } = require('../db/rollingStock');
 const createError = require('../utils/createError');
 
@@ -13,19 +13,19 @@ const createError = require('../utils/createError');
  * @params {Object} body - Request body.
  * @returns {Promise<{ status, json }>}
  */
-exports.create = async (body) => {
-  if (!validate(body)) {
+exports.handleCreate = async (body) => {
+  if (!validateRollingStock(body)) {
     console.log('Invalid payload');
     return { status: 400, json: createError('Invalid payload') };
   }
 
-  const existing = await find({ unitNumber: body.unitNumber });
+  const existing = await findRollingStock({ unitNumber: body.unitNumber });
   if (existing.length) {
     console.log('Already exists');
     return { status: 409, json: createError('Rolling stock with this unitNumber already exists.') };
   }
 
-  return { status: 201, json: await create(body) };
+  return { status: 201, json: await createRollingStock(body) };
 };
 
 /**
@@ -36,7 +36,7 @@ exports.create = async (body) => {
  * @params {Object} body - Request body.
  * @returns {Promise<{ status, json }>}
  */
-exports.list = async () => ({ status: 200, json: await find({}) });
+exports.handleList = async () => ({ status: 200, json: await findRollingStock({}) });
 
 /**
  * Read a RollingStockDocument by 'id'.
@@ -45,7 +45,7 @@ exports.list = async () => ({ status: 200, json: await find({}) });
  * @params {Object} params - Request params.
  * @returns {Promise<{ status, json }>}
  */
-exports.read = async (body, params) => {
+exports.handleRead = async (body, params) => {
   const { rollingStockId } = params;
   if (!rollingStockId) {
     console.log('No rollingStockId specified!');
@@ -53,14 +53,13 @@ exports.read = async (body, params) => {
   }
 
   // Check it exists
-  const [existing] = await find({ id: rollingStockId });
+  const [existing] = await findRollingStock({ id: rollingStockId });
   if (!existing) {
     console.log('Not found');
     return { status: 404, json: createError('Not found') };
   }
 
-  const [doc] = await find({ id: rollingStockId });
-  return { status: 200, json: doc };
+  return { status: 200, json: existing };
 };
 
 /**
@@ -70,7 +69,7 @@ exports.read = async (body, params) => {
  * @params {Object} params - Request params.
  * @returns {Promise<{ status, json }>}
  */
-exports.replace = async (body, params) => {
+exports.handleReplace = async (body, params) => {
   const { rollingStockId } = params;
   if (!rollingStockId) {
     console.log('No rollingStockId specified!');
@@ -78,19 +77,19 @@ exports.replace = async (body, params) => {
   }
 
   // Validate the payload
-  if (!validate(body)) {
+  if (!validateRollingStock(body)) {
     console.log('Invalid payload');
     return { status: 400, json: createError('Invalid payload') };
   }
 
   // Check it exists
-  const [existing] = await find({ id: rollingStockId });
+  const [existing] = await findRollingStock({ id: rollingStockId });
   if (!existing) {
     console.log('Not found');
     return { status: 404, json: createError('Not found') };
   }
 
-  return { status: 200, json: await replace(existing, body) };
+  return { status: 200, json: await replaceRollingStock(existing, body) };
 };
 
 /**
@@ -100,7 +99,7 @@ exports.replace = async (body, params) => {
  * @params {Object} params - Request params.
  * @returns {Promise<{ status, json }>}
  */
-exports.del = async (body, params) => {
+exports.handleDelete = async (body, params) => {
   const { rollingStockId } = params;
   if (!rollingStockId) {
     console.log('No rollingStockId specified!');
@@ -108,12 +107,12 @@ exports.del = async (body, params) => {
   }
 
   // Check it exists
-  const [existing] = await find({ id: rollingStockId });
+  const [existing] = await findRollingStock({ id: rollingStockId });
   if (!existing) {
     console.log('Not found');
     return { status: 404, json: createError('Not found') };
   }
 
-  await del(rollingStockId);
+  await deleteRollingStock(rollingStockId);
   return { status: 200 };
 };

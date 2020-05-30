@@ -6,10 +6,11 @@ const {
   find,
   replaceOne,
   deleteOne,
-} = require('./index');
+} = require('./mongo');
 const schema = require('../schemas/RollingStockDocument.schema.json');
 const validate = require('../utils/validate');
 
+/** Name of the rolling stock DB collection */
 const COLLECTION_NAME = 'RollingStockDocument';
 
 /**
@@ -18,7 +19,7 @@ const COLLECTION_NAME = 'RollingStockDocument';
  * @param {Object} body - Request payload.
  * @returns {boolean} true if the document is a valid RollingStockDocument.
  */
-exports.validate = (body) => validate(schema, body);
+exports.validateRollingStock = body => validate(schema, body);
 
 /**
  * Create a document in the DB.
@@ -26,12 +27,11 @@ exports.validate = (body) => validate(schema, body);
  * @param {Object} body - Request payload.
  * @returns {Object} Resulting resource.
  */
-exports.create = async (body) => {
+exports.createRollingStock = async (body) => {
   const now = Date.now();
-  const id = chance.string({ length: 32, alpha: true, numeric: true });
   const newDoc = {
     ...body,
-    id,
+    id: chance.guid({ version: 4 }),
     createdAt: now,
     updatedAt: now,
   };
@@ -46,7 +46,7 @@ exports.create = async (body) => {
  * @param {Object} filter - Request payload.
  * @returns {Object} Resulting resources.
  */
-exports.find = async (filter) => {
+exports.findRollingStock = async (filter) => {
   const res = await find(COLLECTION_NAME, filter);
   return res ? res.map((p) => omit(p, ['_id'])) : null;
 };
@@ -57,16 +57,16 @@ exports.find = async (filter) => {
  * @param {Object} existing - The existing user document.
  * @param {Object} body - Request body containing the new version.
  */
-exports.replace = async (existing, body) => {
+exports.replaceRollingStock = async (existing, body) => {
   const filter = { id: existing.id };
   const [found] = await find(COLLECTION_NAME, filter);
   const newDoc = {
     ...body,
+    updatedAt: Date.now(),
 
     // Preserve some fields
     id: found.id,
     createdAt: found.createdAt,
-    updatedAt: Date.now(),
   };
 
   await replaceOne(COLLECTION_NAME, {
@@ -82,4 +82,4 @@ exports.replace = async (existing, body) => {
  * @param {string} id - ID to delete by.
  * @returns {Promise}
  */
-exports.del = async (id) => deleteOne(COLLECTION_NAME, { id });
+exports.deleteRollingStock = async id => deleteOne(COLLECTION_NAME, { id });

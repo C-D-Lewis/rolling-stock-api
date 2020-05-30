@@ -1,9 +1,12 @@
 const api = require('./api');
-const db = require('./db');
+const mongo = require('./db/mongo');
 
+/**
+ * The main function.
+ */
 const main = async () => {
   await api.init();
-  await db.init();
+  await mongo.init();
 };
 
 main();

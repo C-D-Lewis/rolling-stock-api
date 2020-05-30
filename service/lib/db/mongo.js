@@ -7,9 +7,7 @@ const DB_NAME = 'RollingStockService';
 /** Default page size */
 const PAGE_SIZE = 16;
 
-const client = new MongoClient(MONGO_URL, {
-  useUnifiedTopology: true,
-});
+const client = new MongoClient(MONGO_URL, { useUnifiedTopology: true });
 let db;
 
 /**
@@ -61,5 +59,3 @@ exports.replaceOne = (name, filter, doc) => db.collection(name).replaceOne(filte
  * @param {Object} filter - Filter to use.
  */
 exports.deleteOne = (name, filter) => db.collection(name).deleteOne(filter);
-
-process.on('exit', deinit);

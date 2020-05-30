@@ -1,11 +1,11 @@
 const express = require('express');
 const { port } = require('../config').server;
 const {
-  create: createRollingStock,
-  list: listRollingStock,
-  read: readRollingStock,
-  replace: replaceRollingStock,
-  del: deleteRollingStock,
+  handleCreate,
+  handleList,
+  handleRead,
+  handleReplace,
+  handleDelete,
 } = require('./rollingStock');
 const middleware = require('./middleware');
 
@@ -29,11 +29,11 @@ exports.init = async () => {
   server.use(enablePreflight);
   server.get('/healthcheck', (req, res) => res.status(200).json({ ping: 'pong' }));
 
-  server.post('/rollingStock', middleware(createRollingStock));
-  server.get('/rollingStock', middleware(listRollingStock));
-  server.get('/rollingStock/:rollingStockId', middleware(readRollingStock));
-  server.put('/rollingStock/:rollingStockId', middleware(replaceRollingStock));
-  server.delete('/rollingStock/:rollingStockId', middleware(deleteRollingStock));
+  server.post('/rollingStock', middleware(handleCreate));
+  server.get('/rollingStock', middleware(handleList));
+  server.get('/rollingStock/:rollingStockId', middleware(handleRead));
+  server.put('/rollingStock/:rollingStockId', middleware(handleReplace));
+  server.delete('/rollingStock/:rollingStockId', middleware(handleDelete));
 
   server.listen(port, () => console.log(`Server started on ${port}`));
 };
