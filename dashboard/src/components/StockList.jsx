@@ -133,7 +133,7 @@ const ListItem = ({ item }) =>
   </Container>;
 
 const StockList = ({ items }) =>
-  <Container>
+  <Container style={{ border: '1px solid #4444' }}>
     <ListHeader />
     {items.map(p => <ListItem key={p.unitNumber} item={p} />)}
   </Container>

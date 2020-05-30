@@ -41,10 +41,10 @@ const FindPage = () => {
     <Fader>
       <Container style={{ padding: 20 }}>
         <Title>Find Rolling Stock</Title>
-        <Subtitle>Use this page to search for an existing Rolling Stock resource.</Subtitle>
+        <Subtitle>Search for an existing Rolling Stock resource by unit number, class, type, or manufacturer.</Subtitle>
         <Container style={{ maxWidth: 400, marginTop: 30 }}>
           <Row>
-            <RowLabel>Unit Number or Class</RowLabel>
+            <RowLabel>Query</RowLabel>
             <Input value={query} onChange={setQuery}/>
             <Button disabled={inProgress} onClick={performSearch}>Search</Button>
           </Row>
