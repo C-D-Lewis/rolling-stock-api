@@ -46,7 +46,11 @@ const FindPage = () => {
           <Row>
             <RowLabel>Query</RowLabel>
             <Input value={query} onChange={setQuery}/>
-            <Button disabled={inProgress} onClick={performSearch}>Search</Button>
+            <Button
+              disabled={inProgress}
+              onClick={performSearch}>
+              Search
+            </Button>
           </Row>
         </Container>
 

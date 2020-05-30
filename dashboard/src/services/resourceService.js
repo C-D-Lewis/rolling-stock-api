@@ -64,3 +64,19 @@ export const updateResource = async (json) => {
 
   return await res.json();
 };
+
+/**
+ * Delete a resource.
+ *
+ * @param {string} id - Resource ID to delete.
+ * @returns {Promise}
+ */
+export const deleteResource = async (id) => {
+  const { ip } = store.getState();
+
+  const opts = { method: 'delete' };
+  const res = await fetch(`http://${ip}:${SERVICE_PORT}/rollingStock/${id}`, opts);
+  if (!res.ok) {
+    throw new Error(`Failed to delete resource: ${res.statusText}`);
+  }
+};

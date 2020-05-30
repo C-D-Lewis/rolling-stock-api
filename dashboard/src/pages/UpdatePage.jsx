@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Container from '../components/Container.jsx';
 import Fader from '../components/Fader.jsx';
 import { Button, ButtonBar } from '../components/Button.jsx';
-import { updateResource } from '../services/resourceService';
+import { updateResource, deleteResource } from '../services/resourceService';
+import { setCurrentResource, setCurrentPage } from '../actions';
 import Title from '../components/Title.jsx';
 import Subtitle from '../components/Subtitle.jsx';
 import Text from '../components/Text.jsx';
@@ -11,6 +12,7 @@ import RowLabel from '../components/RowLabel.jsx';
 import Row from '../components/Row.jsx';
 import Input from '../components/Input.jsx';
 import Select from '../components/Select.jsx';
+import RecentPage from './RecentPage.jsx';
 
 /** Types of rolling stock available. TOOD: Use same schema */
 const TYPES = [
@@ -37,10 +39,13 @@ const waitAsync = ms => new Promise(resolve => setTimeout(resolve, ms));
  * @returns {HTMLElement}
  */
 const UpdatePage = () => {
+  const dispatch = useDispatch();
+
   const ip = useSelector(state => state.ip);
   const currentResource = useSelector(state => state.currentResource);
 
-  const [inProgress, setInProgress] = useState(false);
+  const [updating, setUpdating] = useState(false);
+  const [deleting, setDeleting] = useState(false);
   const [type, setType] = useState(TYPES[0]);
   const [className, setClassName] = useState('');
   const [unitNumber, setUnitNumber] = useState('');
@@ -53,11 +58,10 @@ const UpdatePage = () => {
   const [image, setImage] = useState('');
 
   /**
-   * Make the POST request to create a resource.
+   * Make the PUT request to update the resource.
    */
   const performUpdate = async () => {
-    setInProgress(true);
-
+    setUpdating(true);
     await waitAsync(300);
 
     try {
@@ -79,7 +83,28 @@ const UpdatePage = () => {
       alert(e);
     }
 
-    setInProgress(false);
+    setUpdating(false);
+  };
+
+  /**
+   * Make the DELETE request to delete the resource.
+   */
+  const performDelete = async () => {
+    if (!window.confirm('Are you sure?')) return;
+
+    setDeleting(true);
+    await waitAsync(300);
+
+    try {
+      await deleteResource(currentResource.id);
+
+      dispatch(setCurrentResource({}));
+      dispatch(setCurrentPage(RecentPage));
+    } catch (e) {
+      alert(e);
+    }
+
+    setDeleting(false);
   };
 
   // When mounted, display item data
@@ -146,7 +171,17 @@ const UpdatePage = () => {
           </Row>
         </Container>
         <ButtonBar>
-          <Button disabled={inProgress} onClick={performUpdate}>Update</Button>
+          <Button
+            disabled={updating}
+            onClick={performUpdate}>
+            Update
+          </Button>
+          <Button
+            backgroundColor={'red'}
+            disabled={deleting}
+            onClick={performDelete}>
+            Delete
+          </Button>
         </ButtonBar>
       </Container>
     </Fader>

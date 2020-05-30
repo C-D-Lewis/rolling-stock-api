@@ -24,17 +24,18 @@ export const ButtonBar = ({ children  }) =>
  * @param {Object} props - Component props.
  * @returns {HTMLElement}
  */
-export const Button = ({ children, disabled = false, onClick }) =>
+export const Button = ({ children, disabled = false, onClick, backgroundColor = Colors.Button.background }) =>
   <div
     className="button"
     onClick={() => disabled ? () => {} : onClick()}
     style={{
       color: Colors.Button.foreground,
-      backgroundColor: disabled ? 'lightgrey' : Colors.Button.background,
+      backgroundColor: disabled ? 'lightgrey' : backgroundColor,
       borderRadius: 5,
       fontWeight: 'bold',
       padding: '10px 15px',
       cursor: 'pointer',
+      marginRight: 5,
     }}>
     {children}
   </div>;

@@ -137,7 +137,11 @@ const CreatePage = () => {
           </Row>
         </Container>
         <ButtonBar>
-          <Button disabled={inProgress} onClick={performCreate}>Create</Button>
+          <Button
+            disabled={inProgress}
+            onClick={performCreate}>
+            Create
+          </Button>
         </ButtonBar>
       </Container>
     </Fader>
