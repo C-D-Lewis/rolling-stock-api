@@ -34,7 +34,8 @@ export const createResource = async (json) => {
 export const findResources = async (query) => {
   const { ip } = store.getState();
 
-  const res = await fetch(`http://${ip}:${SERVICE_PORT}/rollingStock`);
+  const queryString = query ? `?q=${query}` : '';
+  const res = await fetch(`http://${ip}:${SERVICE_PORT}/rollingStock${queryString}`);
   if (!res.ok) {
     throw new Error(`Failed to find resources: ${res.statusText}`);
   }

@@ -34,9 +34,27 @@ exports.handleCreate = async (body) => {
  * TODO: Pagination?
  *
  * @params {Object} body - Request body.
+ * @params {Object} params - Request params.
+ * @params {Object} queryString - Request query string.
  * @returns {Promise<{ status, json }>}
  */
-exports.handleList = async () => ({ status: 200, json: await findRollingStock({}) });
+exports.handleList = async (body, params, queryString) => {
+  if (queryString.q && queryString.q.length > 0) {
+    // Unit number, or class
+    let found = await findRollingStock({
+      $or: [
+        { unitNumber: queryString.q },
+        { class: queryString.q },
+        { type: queryString.q },
+        { manufacturer: queryString.q },
+      ],
+    });
+    return { status: 200, json: found };
+  }
+
+  // Plain list operation
+  return { status: 200, json: await findRollingStock({}) };
+};
 
 /**
  * Read a RollingStockDocument by 'id'.

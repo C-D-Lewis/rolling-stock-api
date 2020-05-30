@@ -7,8 +7,11 @@ const createError = require('../utils/createError');
  * @returns {Function} Function provided to express.
  */
 const middleware = handler => async (req, res) => {
+  const { method, body, params, query, url } = req;
+  console.log(`${method} ${url} ${JSON.stringify(body)}`);
+
   try {
-    const { status, json } = await handler(req.body, req.params);
+    const { status, json } = await handler(req.body, req.params, req.query);
     return json ? res.status(status).json(json) : res.status(status).send();
   } catch (e) {
     console.log(e);
