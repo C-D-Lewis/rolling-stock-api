@@ -64,16 +64,19 @@ const Dashboard = () => {
       <Container style={{ flexDirection: 'row', height: '100%' }}>
         <Sidebar>
           <SidebarMenuItem
+            icon={Images.history}
             selected={currentPage === RecentPage}
             onClick={() => dispatch(setCurrentPage(RecentPage))}>
             Recent
           </SidebarMenuItem>
           <SidebarMenuItem
+            icon={Images.pencil}
             selected={currentPage === CreatePage}
             onClick={() => dispatch(setCurrentPage(CreatePage))}>
             Create New
           </SidebarMenuItem>
           <SidebarMenuItem
+            icon={Images.magnify}
             selected={currentPage === FindPage}
             onClick={() => dispatch(setCurrentPage(FindPage))}>
             Find Existing

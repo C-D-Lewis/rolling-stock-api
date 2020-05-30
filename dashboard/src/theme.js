@@ -16,6 +16,9 @@ export const Colors = {
 /** Theme images */
 export const Images = {
   logo: '../assets/images/logo.png',
+  history: '../assets/images/history.png',
+  pencil: '../assets/images/pencil.png',
+  magnify: '../assets/images/magnify.png',
 };
 
 export const Styles = {

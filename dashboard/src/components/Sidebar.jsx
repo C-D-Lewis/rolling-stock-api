@@ -24,7 +24,7 @@ export const Sidebar = ({ children }) =>
  * @param {Object} props - Component props.
  * @returns {HTMLElement}
  */
-export const SidebarMenuItem = ({ children, onClick, selected }) =>
+export const SidebarMenuItem = ({ children, onClick, selected, icon }) =>
   <div
     className="sidebarMenuItem"
     onClick={onClick}
@@ -38,7 +38,15 @@ export const SidebarMenuItem = ({ children, onClick, selected }) =>
       alignItems: 'center',
       backgroundColor: selected ? '#ddd' : 'white',
     }}>
-    <div style={{ paddingLeft: 10 }}>
+    <img
+      style={{
+        width: 25,
+        height: 'auto',
+        paddingLeft: 10,
+        paddingRight: 5,
+      }}
+      src={icon}/>
+    <div style={{  }}>
       {children}
     </div>
   </div>;
