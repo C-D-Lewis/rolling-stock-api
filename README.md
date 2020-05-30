@@ -5,7 +5,8 @@ Full-stack demo project modelling management of railway stock inventory.
 
 ## `service`
 
-Express server exposing a CRUD API with schema-validated endpoints.
+Express server exposing a CRUD API with schema-validated endpoints storing in
+MongoDB.
 
 * `POST /rollingStock` - Create a rolling stock item.
 
