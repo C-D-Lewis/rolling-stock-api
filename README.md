@@ -27,6 +27,16 @@ MongoDB.
 React dashboard application built with Webpack to allow human management of
 database entries.
 
+* Create a rolling stock item.
+
+* View a table of recently created items.
+
+* Search for items by unit number, class, type, or manufacturer.
+
+* Update an existing item.
+
+* Delete an existing item.
+
 ![screenshot.png](dashboard/screenshot.png)
 
 
