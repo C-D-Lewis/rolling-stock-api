@@ -1,11 +1,12 @@
-FROM node:10-alpine
+FROM node:14-alpine
 
 # Install dependencies
 WORKDIR /project
-ADD package* ./
+
+ADD package* /project/
+
 RUN npm ci
 
-ADD . /project
+ADD . /project/
 
-# Run dredd tests
 ENTRYPOINT ["npm", "start"]
