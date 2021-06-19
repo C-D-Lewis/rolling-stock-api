@@ -1,9 +1,9 @@
 const { expect } = require('chai');
+const createError = require('../../lib/utils/createError');
 const validate = require('../../lib/utils/validate');
-const util = require('../../lib/util');
 
 describe('test:unit', () => {
-  describe('util.js', () => {
+  describe('utils', () => {
     it('should perform schema validation', () => {
       const schema = {
         additionalProperties: false,
@@ -15,11 +15,9 @@ describe('test:unit', () => {
 
       expect(validate(schema, data)).to.equal(true);
     });
-  });
 
-  describe('util.js', () => {
     it('should create an error response object', () => {
-      const obj = util.createError('Some error reason');
+      const obj = createError('Some error reason');
 
       expect(obj.error).to.equal('Some error reason');
     });
