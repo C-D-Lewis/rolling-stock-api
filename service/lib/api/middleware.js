@@ -6,8 +6,10 @@ const createError = require('../utils/createError');
  * @param {Function} handler - API handler function.
  * @returns {Function} Function provided to express.
  */
-const middleware = handler => async (req, res) => {
-  const { method, body, params, query, url } = req;
+const middleware = (handler) => async (req, res) => {
+  const {
+    method, body, params, query, url,
+  } = req;
   console.log(`${method} ${url} ${JSON.stringify(body)}`);
 
   try {

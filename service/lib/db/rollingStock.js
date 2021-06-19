@@ -19,7 +19,7 @@ const COLLECTION_NAME = 'RollingStockDocument';
  * @param {Object} body - Request payload.
  * @returns {boolean} true if the document is a valid RollingStockDocument.
  */
-exports.validateRollingStock = body => validate(schema, body);
+exports.validateRollingStock = (body) => validate(schema, body);
 
 /**
  * Create a document in the DB.
@@ -82,4 +82,4 @@ exports.replaceRollingStock = async (existing, body) => {
  * @param {string} id - ID to delete by.
  * @returns {Promise}
  */
-exports.deleteRollingStock = async id => deleteOne(COLLECTION_NAME, { id });
+exports.deleteRollingStock = async (id) => deleteOne(COLLECTION_NAME, { id });

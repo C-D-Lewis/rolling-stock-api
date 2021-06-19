@@ -41,7 +41,7 @@ exports.handleCreate = async (body) => {
 exports.handleList = async (body, params, queryString) => {
   if (queryString.q && queryString.q.length > 0) {
     // Unit number, or class
-    let found = await findRollingStock({
+    const found = await findRollingStock({
       $or: [
         { unitNumber: queryString.q },
         { class: queryString.q },

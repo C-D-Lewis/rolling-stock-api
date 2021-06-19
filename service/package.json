@@ -5,12 +5,11 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "node lib/index.js",
-    "lint": "eslint lib",
+    "lint": "eslint lib --fix",
     "docker:build": "docker build -t rolling-stock-service .",
     "docker:run": "docker run -t rolling-stock-service",
     "test:unit": "nyc mocha tests/unit/index.spec.js",
-    "test:e2e": "mocha tests/end-to-end/index.spec.js",
-    "prepare": "husky install"
+    "test:e2e": "mocha tests/end-to-end/index.spec.js"
   },
   "author": "Chris Lewis",
   "license": "Apache-2.0",
@@ -19,11 +18,8 @@
     "eslint": "^6.5.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
-    "husky": "^6.0.0",
-    "lint-staged": "^11.0.0",
     "mocha": "^6.2.0",
-    "nyc": "^14.1.1",
-    "prettier": "^2.3.1"
+    "nyc": "^14.1.1"
   },
   "dependencies": {
     "ajv": "^6.10.2",
@@ -41,20 +37,6 @@
     "env": {
       "node": true
     }
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged -p false"
-    }
-  },
-  "prettier": {
-    "printWidth": 100,
-    "singleQuote": true,
-    "trailingComma": "all"
-  },
-  "lint-staged": {
-    "*.{js,jsx,json,md,yaml,yml}": "prettier --write",
-    "*.js": "eslint --fix"
   },
   "nyc": {
     "exclude": [

@@ -41,7 +41,8 @@ exports.insertOne = (name, doc) => db.collection(name).insertOne(doc);
  * @param {string} name - Collection name.
  * @param {Object} filter - Filter to use.
  */
-exports.find = (name, filter) => db.collection(name).find(filter).sort({ createdAt: -1 }).limit(PAGE_SIZE).toArray();
+exports.find = (name, filter) => db.collection(name).find(filter).sort({ createdAt: -1 }).limit(PAGE_SIZE)
+  .toArray();
 
 /**
  * Update a document.
