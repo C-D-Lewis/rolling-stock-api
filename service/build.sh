@@ -6,5 +6,5 @@ set -eu
 ./node_modules/.bin/tsc
 
 # Copy extra files
-mkdir -p dist/schemas
-cp src/schemas/* dist/schemas/
+mkdir -p ./dist/schemas
+cp ./src/schemas/* ./dist/schemas/

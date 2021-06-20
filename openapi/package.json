@@ -1,0 +1,13 @@
+{
+  "name": "openapi",
+  "version": "1.0.0",
+  "description": "OpenAPI description of the railway stock API",
+  "scripts": {
+    "build": "evrythng-openapi-tools join . ."
+  },
+  "author": "Chris Lewis",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "evrythng-openapi-tools": "^1.7.1"
+  }
+}
