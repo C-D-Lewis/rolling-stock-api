@@ -1,6 +1,6 @@
 const { expect } = require('chai');
-const createError = require('../../src/utils/createError');
-const validate = require('../../src/utils/validate');
+const createError = require('../../dist/utils/createError').default;
+const validate = require('../../dist/utils/validate').default;
 
 describe('test:unit', () => {
   describe('utils', () => {
