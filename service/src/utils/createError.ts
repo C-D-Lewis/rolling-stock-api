@@ -1,9 +1,11 @@
+import { ApiError } from '../api/types.d';
+
 /**
  * Create a standardized error response.
  *
  * @param {string} message - Error message.
  * @returns {object} The completed error response.
  */
-const createError = (message) => ({ error: message });
+const createError = (message: string): ApiError => ({ error: message });
 
-module.exports = createError;
+export default createError;

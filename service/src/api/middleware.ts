@@ -1,4 +1,9 @@
 const createError = require('../utils/createError');
+import {
+  ExpressRequest,
+  ExpressResult,
+  MiddlewareHandler,
+} from './types.d';
 
 /**
  * Function to allow handlers to return response objects, and handle errors.
@@ -6,14 +11,12 @@ const createError = require('../utils/createError');
  * @param {Function} handler - API handler function.
  * @returns {Function} Function provided to express.
  */
-const middleware = (handler) => async (req, res) => {
-  const {
-    method, body, params, query, url,
-  } = req;
+const middleware = (handler: MiddlewareHandler) => async (req: ExpressRequest, res: ExpressResult) => {
+  const { method, body, params, query, url } = req;
   console.log(`${method} ${url} ${JSON.stringify(body)}`);
 
   try {
-    const { status, json } = await handler(req.body, req.params, req.query);
+    const { status, json } = await handler(body, params, query);
     return json ? res.status(status).json(json) : res.status(status).send();
   } catch (e) {
     console.log(e);
@@ -21,4 +24,4 @@ const middleware = (handler) => async (req, res) => {
   }
 };
 
-module.exports = middleware;
+export default middleware;

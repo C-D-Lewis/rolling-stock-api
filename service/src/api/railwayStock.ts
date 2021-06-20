@@ -1,19 +1,15 @@
-const {
-  createRailwayStock,
-  findRailwayStock,
-  replaceRailwayStock,
-  deleteRailwayStock,
-  validateRailwayStock,
-} = require('../db/railwayStock');
-const createError = require('../utils/createError');
+import { createRailwayStock, findRailwayStock, replaceRailwayStock, deleteRailwayStock, validateRailwayStock } from '../db/railwayStock';
+import { Query, Params, MiddlewareHandlerResult } from './types.d';
+import { RailwayStockDocument } from '../db/types.d';
+import createError from '../utils/createError';
 
 /**
  * Validate and create a RailwayStockDocument.
  *
- * @params {Object} body - Request body.
- * @returns {Promise<{ status, json }>}
+ * @params {RailwayStockDocument} body - Request body.
+ * @returns {Promise<MiddlewareHandlerResult>}
  */
-exports.handleCreate = async (body) => {
+export const handleCreate = async (body: RailwayStockDocument): Promise<MiddlewareHandlerResult> => {
   if (!validateRailwayStock(body)) {
     console.log('Invalid payload');
     return { status: 400, json: createError('Invalid payload') };
@@ -22,7 +18,10 @@ exports.handleCreate = async (body) => {
   const existing = await findRailwayStock({ unitNumber: body.unitNumber });
   if (existing.length) {
     console.log('Already exists');
-    return { status: 409, json: createError('Railway stock with this unitNumber already exists.') };
+    return {
+      status: 409,
+      json: createError('Railway stock with this unitNumber already exists.'),
+    };
   }
 
   return { status: 201, json: await createRailwayStock(body) };
@@ -33,37 +32,39 @@ exports.handleCreate = async (body) => {
  *
  * TODO: Pagination?
  *
- * @params {Object} body - Request body.
- * @params {Object} params - Request params.
- * @params {Object} queryString - Request query string.
- * @returns {Promise<{ status, json }>}
+ * @params {RailwayStockDocument} body - Request body.
+ * @params {Params} params - Request params.
+ * @params {Query} query - Request query string.
+ * @returns {Promise<MiddlewareHandlerResult>}
  */
-exports.handleList = async (body, params, queryString) => {
-  if (queryString.q && queryString.q.length > 0) {
-    // Unit number, or class
-    const found = await findRailwayStock({
-      $or: [
-        { unitNumber: queryString.q },
-        { class: queryString.q },
-        { type: queryString.q },
-        { manufacturer: queryString.q },
-      ],
-    });
-    return { status: 200, json: found };
-  }
-
+export const handleList = async (
+  body: RailwayStockDocument,
+  params: object,
+  query: Query
+): Promise<MiddlewareHandlerResult> => {
   // Plain list operation
-  return { status: 200, json: await findRailwayStock({}) };
+  if (!query.q) return { status: 200, json: await findRailwayStock({}) };
+
+  // Unit number, or class
+  const found = await findRailwayStock({
+    $or: [
+      { unitNumber: query.q },
+      { class: query.q },
+      { type: query.q },
+      { manufacturer: query.q },
+    ],
+  });
+  return { status: 200, json: found };
 };
 
 /**
  * Read a RailwayStockDocument by 'id'.
  *
- * @params {Object} body - Request body.
- * @params {Object} params - Request params.
- * @returns {Promise<{ status, json }>}
+ * @params {RailwayStockDocument} body - Request body.
+ * @params {Params} params - Request params.
+ * @returns {Promise<MiddlewareHandlerResult>}
  */
-exports.handleRead = async (body, params) => {
+export const handleRead = async (body: RailwayStockDocument, params: Params): Promise<MiddlewareHandlerResult> => {
   const { railwayStockId } = params;
   if (!railwayStockId) {
     console.log('No railwayStockId specified!');
@@ -83,11 +84,11 @@ exports.handleRead = async (body, params) => {
 /**
  * Completely update a RailwayStockDocument by 'id'.
  *
- * @params {Object} body - Request body.
- * @params {Object} params - Request params.
- * @returns {Promise<{ status, json }>}
+ * @params {RailwayStockDocument} body - Request body.
+ * @params {Params} params - Request params.
+ * @returns {Promise<MiddlewareHandlerResult>}
  */
-exports.handleReplace = async (body, params) => {
+export const handleReplace = async (body: RailwayStockDocument, params: Params): Promise<MiddlewareHandlerResult> => {
   const { railwayStockId } = params;
   if (!railwayStockId) {
     console.log('No railwayStockId specified!');
@@ -113,11 +114,11 @@ exports.handleReplace = async (body, params) => {
 /**
  * Delete a RailwayStockDocument by 'id'.
  *
- * @params {Object} body - Request body.
- * @params {Object} params - Request params.
- * @returns {Promise<{ status, json }>}
+ * @params {RailwayStockDocument} body - Request body.
+ * @params {Params} params - Request params.
+ * @returns {Promise<MiddlewareHandlerResult>}
  */
-exports.handleDelete = async (body, params) => {
+export const handleDelete = async (body: RailwayStockDocument, params: Params): Promise<MiddlewareHandlerResult> => {
   const { railwayStockId } = params;
   if (!railwayStockId) {
     console.log('No railwayStockId specified!');
