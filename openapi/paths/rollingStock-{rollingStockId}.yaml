@@ -1,17 +1,17 @@
 get:
-  summary: 'Read a rolling stock'
+  summary: 'Read a railway stock'
   tags:
-    - 'Rolling Stock'
+    - 'Railway Stock'
   parameters:
     -
-      $ref: '#/components/parameters/rollingStockId'
+      $ref: '#/components/parameters/railwayStockId'
   responses:
     '200':
-      description: 'Rolling stock found successfully.'
+      description: 'Railway stock found successfully.'
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/RollingStockDocument'
+            $ref: '#/components/schemas/RailwayStockDocument'
           example:
             type: emu
             class: '345'
@@ -21,17 +21,17 @@ get:
             createdAt: 1570880557084
             updatedAt: 1570880557084
 put:
-  summary: 'Update a rolling stock'
+  summary: 'Update a railway stock'
   tags:
-    - 'Rolling Stock'
+    - 'Railway Stock'
   parameters:
     -
-      $ref: '#/components/parameters/rollingStockId'
+      $ref: '#/components/parameters/railwayStockId'
   requestBody:
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/RollingStockDocument'
+          $ref: '#/components/schemas/RailwayStockDocument'
         example:
           type: emu
           class: '345'
@@ -42,11 +42,11 @@ put:
           updatedAt: 1570880557084
   responses:
     '200':
-      description: 'Rolling stock updated successfully.'
+      description: 'Railway stock updated successfully.'
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/RollingStockDocument'
+            $ref: '#/components/schemas/RailwayStockDocument'
           example:
             type: emu
             class: '345'
@@ -56,12 +56,12 @@ put:
             createdAt: 1570880557084
             updatedAt: 1570880557084
 delete:
-  summary: 'Delete a rolling stock'
+  summary: 'Delete a railway stock'
   tags:
-    - 'Rolling Stock'
+    - 'Railway Stock'
   parameters:
     -
-      $ref: '#/components/parameters/rollingStockId'
+      $ref: '#/components/parameters/railwayStockId'
   responses:
     '204':
-      description: 'Rolling stock deleted successfully.'
+      description: 'Railway stock deleted successfully.'

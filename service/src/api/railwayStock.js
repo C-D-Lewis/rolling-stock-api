@@ -1,35 +1,35 @@
 const {
-  createRollingStock,
-  findRollingStock,
-  replaceRollingStock,
-  deleteRollingStock,
-  validateRollingStock,
-} = require('../db/rollingStock');
+  createRailwayStock,
+  findRailwayStock,
+  replaceRailwayStock,
+  deleteRailwayStock,
+  validateRailwayStock,
+} = require('../db/railwayStock');
 const createError = require('../utils/createError');
 
 /**
- * Validate and create a RollingStockDocument.
+ * Validate and create a RailwayStockDocument.
  *
  * @params {Object} body - Request body.
  * @returns {Promise<{ status, json }>}
  */
 exports.handleCreate = async (body) => {
-  if (!validateRollingStock(body)) {
+  if (!validateRailwayStock(body)) {
     console.log('Invalid payload');
     return { status: 400, json: createError('Invalid payload') };
   }
 
-  const existing = await findRollingStock({ unitNumber: body.unitNumber });
+  const existing = await findRailwayStock({ unitNumber: body.unitNumber });
   if (existing.length) {
     console.log('Already exists');
-    return { status: 409, json: createError('Rolling stock with this unitNumber already exists.') };
+    return { status: 409, json: createError('Railway stock with this unitNumber already exists.') };
   }
 
-  return { status: 201, json: await createRollingStock(body) };
+  return { status: 201, json: await createRailwayStock(body) };
 };
 
 /**
- * List all RollingStockDocument.
+ * List all RailwayStockDocument.
  *
  * TODO: Pagination?
  *
@@ -41,7 +41,7 @@ exports.handleCreate = async (body) => {
 exports.handleList = async (body, params, queryString) => {
   if (queryString.q && queryString.q.length > 0) {
     // Unit number, or class
-    const found = await findRollingStock({
+    const found = await findRailwayStock({
       $or: [
         { unitNumber: queryString.q },
         { class: queryString.q },
@@ -53,25 +53,25 @@ exports.handleList = async (body, params, queryString) => {
   }
 
   // Plain list operation
-  return { status: 200, json: await findRollingStock({}) };
+  return { status: 200, json: await findRailwayStock({}) };
 };
 
 /**
- * Read a RollingStockDocument by 'id'.
+ * Read a RailwayStockDocument by 'id'.
  *
  * @params {Object} body - Request body.
  * @params {Object} params - Request params.
  * @returns {Promise<{ status, json }>}
  */
 exports.handleRead = async (body, params) => {
-  const { rollingStockId } = params;
-  if (!rollingStockId) {
-    console.log('No rollingStockId specified!');
+  const { railwayStockId } = params;
+  if (!railwayStockId) {
+    console.log('No railwayStockId specified!');
     return { status: 400, json: createError('No ID specified') };
   }
 
   // Check it exists
-  const [existing] = await findRollingStock({ id: rollingStockId });
+  const [existing] = await findRailwayStock({ id: railwayStockId });
   if (!existing) {
     console.log('Not found');
     return { status: 404, json: createError('Not found') };
@@ -81,56 +81,56 @@ exports.handleRead = async (body, params) => {
 };
 
 /**
- * Completely update a RollingStockDocument by 'id'.
+ * Completely update a RailwayStockDocument by 'id'.
  *
  * @params {Object} body - Request body.
  * @params {Object} params - Request params.
  * @returns {Promise<{ status, json }>}
  */
 exports.handleReplace = async (body, params) => {
-  const { rollingStockId } = params;
-  if (!rollingStockId) {
-    console.log('No rollingStockId specified!');
+  const { railwayStockId } = params;
+  if (!railwayStockId) {
+    console.log('No railwayStockId specified!');
     return { status: 400, json: createError('No ID specified') };
   }
 
   // Validate the payload
-  if (!validateRollingStock(body)) {
+  if (!validateRailwayStock(body)) {
     console.log('Invalid payload');
     return { status: 400, json: createError('Invalid payload') };
   }
 
   // Check it exists
-  const [existing] = await findRollingStock({ id: rollingStockId });
+  const [existing] = await findRailwayStock({ id: railwayStockId });
   if (!existing) {
     console.log('Not found');
     return { status: 404, json: createError('Not found') };
   }
 
-  return { status: 200, json: await replaceRollingStock(existing, body) };
+  return { status: 200, json: await replaceRailwayStock(existing, body) };
 };
 
 /**
- * Delete a RollingStockDocument by 'id'.
+ * Delete a RailwayStockDocument by 'id'.
  *
  * @params {Object} body - Request body.
  * @params {Object} params - Request params.
  * @returns {Promise<{ status, json }>}
  */
 exports.handleDelete = async (body, params) => {
-  const { rollingStockId } = params;
-  if (!rollingStockId) {
-    console.log('No rollingStockId specified!');
+  const { railwayStockId } = params;
+  if (!railwayStockId) {
+    console.log('No railwayStockId specified!');
     return { status: 400, json: createError('No ID specified') };
   }
 
   // Check it exists
-  const [existing] = await findRollingStock({ id: rollingStockId });
+  const [existing] = await findRailwayStock({ id: railwayStockId });
   if (!existing) {
     console.log('Not found');
     return { status: 404, json: createError('Not found') };
   }
 
-  await deleteRollingStock(rollingStockId);
+  await deleteRailwayStock(railwayStockId);
   return { status: 200 };
 };

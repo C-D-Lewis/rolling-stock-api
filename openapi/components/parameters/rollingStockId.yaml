@@ -1,6 +1,6 @@
-name: rollingStockId
+name: railwayStockId
 in: path
 required: true
-description: 'The ID of the rolling stock'
+description: 'The ID of the railway stock'
 schema:
   type: string

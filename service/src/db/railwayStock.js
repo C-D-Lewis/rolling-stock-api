@@ -1,25 +1,25 @@
 const { omit } = require('lodash');
 const { ObjectID } = require('mongodb');
-const chance = require('chance').Chance();
 const {
   insertOne,
   find,
   replaceOne,
   deleteOne,
 } = require('./mongo');
-const schema = require('../schemas/RollingStockDocument.schema.json');
+const chance = require('chance').Chance();
+const schema = require('../schemas/RailwayStockDocument.schema.json');
 const validate = require('../utils/validate');
 
-/** Name of the rolling stock DB collection */
-const COLLECTION_NAME = 'RollingStockDocument';
+/** Name of the railway stock DB collection */
+const COLLECTION_NAME = 'RailwayStockDocument';
 
 /**
- * Validate a RollingStockDocument.
+ * Validate a RailwayStockDocument.
  *
  * @param {Object} body - Request payload.
- * @returns {boolean} true if the document is a valid RollingStockDocument.
+ * @returns {boolean} true if the document is a valid RailwayStockDocument.
  */
-exports.validateRollingStock = (body) => validate(schema, body);
+exports.validateRailwayStock = (body) => validate(schema, body);
 
 /**
  * Create a document in the DB.
@@ -27,7 +27,7 @@ exports.validateRollingStock = (body) => validate(schema, body);
  * @param {Object} body - Request payload.
  * @returns {Object} Resulting resource.
  */
-exports.createRollingStock = async (body) => {
+exports.createRailwayStock = async (body) => {
   const now = Date.now();
   const newDoc = {
     ...body,
@@ -46,7 +46,7 @@ exports.createRollingStock = async (body) => {
  * @param {Object} filter - Request payload.
  * @returns {Object} Resulting resources.
  */
-exports.findRollingStock = async (filter) => {
+exports.findRailwayStock = async (filter) => {
   const res = await find(COLLECTION_NAME, filter);
   return res ? res.map((p) => omit(p, ['_id'])) : null;
 };
@@ -57,7 +57,7 @@ exports.findRollingStock = async (filter) => {
  * @param {Object} existing - The existing user document.
  * @param {Object} body - Request body containing the new version.
  */
-exports.replaceRollingStock = async (existing, body) => {
+exports.replaceRailwayStock = async (existing, body) => {
   const filter = { id: existing.id };
   const [found] = await find(COLLECTION_NAME, filter);
   const newDoc = {
@@ -70,7 +70,6 @@ exports.replaceRollingStock = async (existing, body) => {
   };
 
   await replaceOne(COLLECTION_NAME, {
-    /* eslint no-underscore-dangle: 0 */
     _id: ObjectID(found._id),
   }, newDoc);
   return newDoc;
@@ -82,4 +81,4 @@ exports.replaceRollingStock = async (existing, body) => {
  * @param {string} id - ID to delete by.
  * @returns {Promise}
  */
-exports.deleteRollingStock = async (id) => deleteOne(COLLECTION_NAME, { id });
+exports.deleteRailwayStock = async (id) => deleteOne(COLLECTION_NAME, { id });

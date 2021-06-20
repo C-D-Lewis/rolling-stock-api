@@ -51,7 +51,7 @@ const Dashboard = () => {
     <RootContainer>
       <Navbar>
         <NavbarLogo/>
-        <NavbarTitle>Rolling Stock Dashboard</NavbarTitle>
+        <NavbarTitle>Railway Stock Dashboard</NavbarTitle>
         <Input
           value={ip}
           onChange={ip => dispatch(setIp(ip))}

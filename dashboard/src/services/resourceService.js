@@ -17,7 +17,7 @@ export const createResource = async (json) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(json),
   };
-  const res = await fetch(`http://${ip}:${SERVICE_PORT}/rollingStock`, opts);
+  const res = await fetch(`http://${ip}:${SERVICE_PORT}/railwayStock`, opts);
   if (!res.ok) {
     throw new Error(`Failed to create resource: ${res.statusText}`);
   }
@@ -35,7 +35,7 @@ export const findResources = async (query) => {
   const { ip } = store.getState();
 
   const queryString = query ? `?q=${query}` : '';
-  const res = await fetch(`http://${ip}:${SERVICE_PORT}/rollingStock${queryString}`);
+  const res = await fetch(`http://${ip}:${SERVICE_PORT}/railwayStock${queryString}`);
   if (!res.ok) {
     throw new Error(`Failed to find resources: ${res.statusText}`);
   }
@@ -57,7 +57,7 @@ export const updateResource = async (json) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(json),
   };
-  const res = await fetch(`http://${ip}:${SERVICE_PORT}/rollingStock/${json.id}`, opts);
+  const res = await fetch(`http://${ip}:${SERVICE_PORT}/railwayStock/${json.id}`, opts);
   if (!res.ok) {
     throw new Error(`Failed to update resource: ${res.statusText}`);
   }
@@ -75,7 +75,7 @@ export const deleteResource = async (id) => {
   const { ip } = store.getState();
 
   const opts = { method: 'delete' };
-  const res = await fetch(`http://${ip}:${SERVICE_PORT}/rollingStock/${id}`, opts);
+  const res = await fetch(`http://${ip}:${SERVICE_PORT}/railwayStock/${id}`, opts);
   if (!res.ok) {
     throw new Error(`Failed to delete resource: ${res.statusText}`);
   }

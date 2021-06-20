@@ -40,8 +40,8 @@ const FindPage = () => {
   return (
     <Fader>
       <Container style={{ padding: 20 }}>
-        <Title>Find Rolling Stock</Title>
-        <Subtitle>Search for an existing Rolling Stock resource by unit number, class, type, or manufacturer.</Subtitle>
+        <Title>Find Railway Stock</Title>
+        <Subtitle>Search for an existing Railway Stock resource by unit number, class, type, or manufacturer.</Subtitle>
         <Container style={{ maxWidth: 400, marginTop: 30 }}>
           <Row>
             <RowLabel>Query</RowLabel>

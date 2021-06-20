@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Container from '../components/Container.jsx';
-import Fader from '../components/Fader.jsx';
 import { Button, ButtonBar } from '../components/Button.jsx';
 import { updateResource, deleteResource } from '../services/resourceService';
 import { setCurrentResource, setCurrentPage } from '../actions';
+import Fader from '../components/Fader.jsx';
+import Container from '../components/Container.jsx';
 import Title from '../components/Title.jsx';
 import Subtitle from '../components/Subtitle.jsx';
-import Text from '../components/Text.jsx';
 import RowLabel from '../components/RowLabel.jsx';
 import Row from '../components/Row.jsx';
 import Input from '../components/Input.jsx';
 import Select from '../components/Select.jsx';
 import RecentPage from './RecentPage.jsx';
 
-/** Types of rolling stock available. TOOD: Use same schema */
+/** Types of railway stock available. TOOD: Use same schema */
 const TYPES = [
   'diesel',
   'electric',
@@ -126,8 +125,8 @@ const UpdatePage = () => {
   return (
     <Fader>
       <Container style={{ padding: 20, maxWidth: 500 }}>
-        <Title>Update Rolling Stock</Title>
-        <Subtitle>Use this page to update an existing Rolling Stock resource.</Subtitle>
+        <Title>Update Railway Stock</Title>
+        <Subtitle>Use this page to update an existing Railway Stock resource.</Subtitle>
         <Container style={{ marginTop: 30 }}>
           <Row>
             <RowLabel>Type</RowLabel>

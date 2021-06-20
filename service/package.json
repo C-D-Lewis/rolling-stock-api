@@ -1,13 +1,13 @@
 {
-  "name": "rolling-stock-service",
+  "name": "railway-stock-service",
   "version": "1.0.0",
   "description": "Service for managing trains and timetables.",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
     "lint": "eslint src --fix",
-    "docker:build": "docker build -t rolling-stock-service .",
-    "docker:run": "docker run -t rolling-stock-service",
+    "docker:build": "docker build -t railway-stock-service .",
+    "docker:run": "docker run -t railway-stock-service",
     "test:unit": "nyc mocha tests/unit/index.spec.js",
     "test:e2e": "mocha tests/end-to-end/index.spec.js"
   },

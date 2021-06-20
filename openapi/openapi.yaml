@@ -1,26 +1,26 @@
 openapi: 3.0.0
 info:
   version: 1.0.0
-  title: 'Rolling Stock Service'
+  title: 'Railway Stock Service'
 servers:
   -
     url: 'http://localhost'
 paths:
-  '/rollingStock/{rollingStockId}':
+  '/railwayStock/{railwayStockId}':
     get:
-      summary: 'Read a rolling stock'
+      summary: 'Read a railway stock'
       tags:
-        - 'Rolling Stock'
+        - 'Railway Stock'
       parameters:
         -
-          $ref: '#/components/parameters/rollingStockId'
+          $ref: '#/components/parameters/railwayStockId'
       responses:
         '200':
-          description: 'Rolling stock found successfully.'
+          description: 'Railway stock found successfully.'
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RollingStockDocument'
+                $ref: '#/components/schemas/RailwayStockDocument'
               example:
                 type: emu
                 class: '345'
@@ -30,17 +30,17 @@ paths:
                 createdAt: 1570880557084
                 updatedAt: 1570880557084
     put:
-      summary: 'Update a rolling stock'
+      summary: 'Update a railway stock'
       tags:
-        - 'Rolling Stock'
+        - 'Railway Stock'
       parameters:
         -
-          $ref: '#/components/parameters/rollingStockId'
+          $ref: '#/components/parameters/railwayStockId'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RollingStockDocument'
+              $ref: '#/components/schemas/RailwayStockDocument'
             example:
               type: emu
               class: '345'
@@ -51,11 +51,11 @@ paths:
               updatedAt: 1570880557084
       responses:
         '200':
-          description: 'Rolling stock updated successfully.'
+          description: 'Railway stock updated successfully.'
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RollingStockDocument'
+                $ref: '#/components/schemas/RailwayStockDocument'
               example:
                 type: emu
                 class: '345'
@@ -65,25 +65,25 @@ paths:
                 createdAt: 1570880557084
                 updatedAt: 1570880557084
     delete:
-      summary: 'Delete a rolling stock'
+      summary: 'Delete a railway stock'
       tags:
-        - 'Rolling Stock'
+        - 'Railway Stock'
       parameters:
         -
-          $ref: '#/components/parameters/rollingStockId'
+          $ref: '#/components/parameters/railwayStockId'
       responses:
         '204':
-          description: 'Rolling stock deleted successfully.'
-  /rollingStock:
+          description: 'Railway stock deleted successfully.'
+  /railwayStock:
     post:
-      summary: 'Create a rolling stock'
+      summary: 'Create a railway stock'
       tags:
-        - 'Rolling Stock'
+        - 'Railway Stock'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RollingStockDocument'
+              $ref: '#/components/schemas/RailwayStockDocument'
             example:
               type: emu
               class: '345'
@@ -94,11 +94,11 @@ paths:
               updatedAt: 1570880557084
       responses:
         '201':
-          description: 'Created rolling stock successfully.'
+          description: 'Created railway stock successfully.'
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RollingStockDocument'
+                $ref: '#/components/schemas/RailwayStockDocument'
               example:
                 type: emu
                 class: '345'
@@ -108,16 +108,16 @@ paths:
                 createdAt: 1570880557084
                 updatedAt: 1570880557084
     get:
-      summary: 'List rolling stock'
+      summary: 'List railway stock'
       tags:
-        - 'Rolling Stock'
+        - 'Railway Stock'
       responses:
         '200':
-          description: 'A paged array of rolling stock items.'
+          description: 'A paged array of railway stock items.'
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RollingStockDocument'
+                $ref: '#/components/schemas/RailwayStockDocument'
               example:
                 -
                   type: emu
@@ -129,15 +129,15 @@ paths:
                   updatedAt: 1570880557084
 components:
   parameters:
-    rollingStockId:
-      name: rollingStockId
+    railwayStockId:
+      name: railwayStockId
       in: path
       required: true
-      description: 'The ID of the rolling stock'
+      description: 'The ID of the railway stock'
       schema:
         type: string
   schemas:
-    RollingStockDocument:
+    RailwayStockDocument:
       additionalProperties: false
       required:
         - type

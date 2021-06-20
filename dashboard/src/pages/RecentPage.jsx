@@ -35,8 +35,8 @@ const RecentPage = () => {
   return (
     <Fader>
       <Container style={{ padding: 20, flex: 1 }}>
-        <Title>Recent Rolling Stock</Title>
-        <Subtitle>This page shows the most recently created Rolling Stock resources.</Subtitle>
+        <Title>Recent Railway Stock</Title>
+        <Subtitle>This page shows the most recently created Railway Stock resources.</Subtitle>
         <Container style={{ marginTop: 30 }}>
           <StockList items={items} />
         </Container>

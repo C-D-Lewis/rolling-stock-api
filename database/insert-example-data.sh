@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function insert {
-  curl -H Content-Type:application/json -X POST 'http://localhost:8000/rollingStock' -d "$1" && echo ""
+  curl -H Content-Type:application/json -X POST 'http://localhost:8000/railwayStock' -d "$1" && echo ""
 }
 
 insert '{

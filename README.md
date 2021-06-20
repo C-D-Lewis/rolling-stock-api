@@ -1,4 +1,4 @@
-# rolling-stock-api
+# railway-stock-api
 
 Full-stack demo project modelling management of railway stock inventory.
 
@@ -8,18 +8,18 @@ Full-stack demo project modelling management of railway stock inventory.
 Express server exposing a CRUD API with schema-validated endpoints storing in
 MongoDB.
 
-* `POST /rollingStock` - Create a rolling stock item.
+* `POST /railwayStock` - Create a railway stock item.
 
-* `GET /rollingStock` - Retrieve a list of the most recently created items.
+* `GET /railwayStock` - Retrieve a list of the most recently created items.
 
-* `GET /rollingStock?q=...` - Retrieve a filtered list of recently created
+* `GET /railwayStock?q=...` - Retrieve a filtered list of recently created
   items.
 
-* `GET /rollingStock/:rollingStockId` - Retrieve an item by `id`.
+* `GET /railwayStock/:railwayStockId` - Retrieve an item by `id`.
 
-* `PUT /rollingStock/:rollingStockId` - Replace an item by `id`.
+* `PUT /railwayStock/:railwayStockId` - Replace an item by `id`.
 
-* `DELETE /rollingStock/:rollingStockId` - Delete an item by `id`.
+* `DELETE /railwayStock/:railwayStockId` - Delete an item by `id`.
 
 
 ## `dashboard`
@@ -27,7 +27,7 @@ MongoDB.
 React dashboard application built with Webpack to allow human management of
 database entries.
 
-* Create a rolling stock item.
+* Create a railway stock item.
 
 * View a table of recently created items.
 

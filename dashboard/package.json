@@ -1,7 +1,7 @@
 {
-  "name": "rolling-stock-api-dashboard",
+  "name": "railway-stock-api-dashboard",
   "version": "1.0.0",
-  "description": "Dashboard application for managing rolling stock resources",
+  "description": "Dashboard application for managing railway stock resources",
   "main": "webpack.config.js",
   "scripts": {
     "build": "webpack --mode production --config webpack.config.js",

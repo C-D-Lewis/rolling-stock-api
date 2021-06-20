@@ -3,7 +3,7 @@ const { MongoClient } = require('mongodb');
 /* Connection URL */
 const MONGO_URL = 'mongodb://localhost:27017';
 /* Database Name */
-const DB_NAME = 'RollingStockService';
+const DB_NAME = 'RailwayStockService';
 /** Default page size */
 const PAGE_SIZE = 16;
 
@@ -15,8 +15,8 @@ let db;
  */
 exports.init = async () => {
   await client.connect();
-  console.log('Connected to MongoDB');
   db = client.db(DB_NAME);
+  console.log('Connected to MongoDB');
 };
 
 /**

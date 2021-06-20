@@ -14,7 +14,7 @@ import Input from '../components/Input.jsx';
 import Select from '../components/Select.jsx';
 import UpdatePage from './UpdatePage.jsx';
 
-/** Types of rolling stock available. TOOD: Use same schema */
+/** Types of railway stock available. TOOD: Use same schema */
 const TYPES = [
   'diesel',
   'electric',
@@ -92,8 +92,8 @@ const CreatePage = () => {
   return (
     <Fader>
       <Container style={{ padding: 20, maxWidth: 500 }}>
-        <Title>Create Rolling Stock</Title>
-        <Subtitle>Use this page to create a new Rolling Stock resource.</Subtitle>
+        <Title>Create Railway Stock</Title>
+        <Subtitle>Use this page to create a new Railway Stock resource.</Subtitle>
         <Container style={{ marginTop: 30 }}>
           <Row>
             <RowLabel>Type</RowLabel>
