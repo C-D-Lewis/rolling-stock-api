@@ -1,5 +1,4 @@
-const { MongoClient } = require('mongodb');
-
+import { MongoClient } from 'mongodb';
 import { RailwayStockDocument } from './types';
 import config from '../config/config';
 

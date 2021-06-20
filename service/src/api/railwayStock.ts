@@ -1,6 +1,12 @@
-import { createRailwayStock, findRailwayStock, replaceRailwayStock, deleteRailwayStock, validateRailwayStock } from '../db/railwayStock';
-import { Query, Params, MiddlewareHandlerResult } from './types.d';
-import { RailwayStockDocument } from '../db/types.d';
+import {
+  createRailwayStock,
+  findRailwayStock,
+  replaceRailwayStock,
+  deleteRailwayStock,
+  validateRailwayStock,
+} from '../db/railwayStock';
+import { Query, Params, MiddlewareHandlerResult } from './types';
+import { RailwayStockDocument } from '../db/types';
 import createError from '../utils/createError';
 
 /**

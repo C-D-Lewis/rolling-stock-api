@@ -1,4 +1,4 @@
-import { Config } from './types.d';
+import { Config } from './types';
 
 const config: Config = {
   server: {

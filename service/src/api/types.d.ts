@@ -1,5 +1,5 @@
-import { RailwayStockDocument } from '../db/types.d';
-import { Query, Params } from './types.d';
+import { RailwayStockDocument } from '../db/types';
+import { Query, Params } from './types';
 
 export interface MiddlewareHandlerResult {
   status: number;

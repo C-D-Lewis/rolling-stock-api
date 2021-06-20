@@ -1,11 +1,11 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 
-const { port } = require('../../src/config').server;
+const config = require('../../dist/config/config').default;
 
 chai.use(chaiHttp);
 
-const { SERVER = `http://localhost:${port}` } = process.env;
+const { SERVER = `http://localhost:${config.server.port}` } = process.env;
 
 /**
  * POST request.

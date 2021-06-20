@@ -1,4 +1,4 @@
-import { ApiError } from '../api/types.d';
+import { ApiError } from '../api/types';
 
 /**
  * Create a standardized error response.

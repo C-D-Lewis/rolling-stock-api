@@ -1,12 +1,12 @@
-const { omit } = require('lodash');
-const { ObjectID } = require('mongodb');
 const chance = require('chance').Chance();
-const schema = require('../schemas/RailwayStockDocument.schema.json');
 
+import { omit } from 'lodash';
+import { ObjectID } from 'mongodb';
 import { insertOne, find, replaceOne, deleteOne } from './mongo';
+import { RailwayStockDocument } from './types';
+import schema from '../schemas/RailwayStockDocument.schema.json';
 import config from '../config/config';
 import validate from '../utils/validate';
-import { RailwayStockDocument } from './types';
 
 const {
   db: {
@@ -38,7 +38,7 @@ export const createRailwayStock = async (body: RailwayStockDocument): Promise<Ra
   };
 
   const res = await insertOne(collectionName, newDoc);
-  return omit(res.ops[0], ['_id']);
+  return <RailwayStockDocument> omit(res.ops[0], ['_id']);
 };
 
 /**
@@ -49,7 +49,7 @@ export const createRailwayStock = async (body: RailwayStockDocument): Promise<Ra
  */
 export const findRailwayStock = async (filter: object): Promise<RailwayStockDocument[]> => {
   const res = await find(collectionName, filter);
-  return res ? res.map((p) => omit(p, ['_id'])) : [];
+  return res ? res.map((p) => <RailwayStockDocument> omit(p, ['_id'])) : [];
 };
 
 /**
@@ -74,7 +74,7 @@ export const replaceRailwayStock = async (
   };
 
   await replaceOne(collectionName, {
-    _id: ObjectID(found._id),
+    _id: new ObjectID(found._id),
   }, newDoc);
   return newDoc;
 };

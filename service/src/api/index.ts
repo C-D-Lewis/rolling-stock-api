@@ -1,6 +1,5 @@
-const express = require('express');
+import express from 'express';
 import { handleCreate, handleList, handleRead, handleReplace, handleDelete } from './railwayStock';
-
 import middleware from './middleware';
 import config from '../config/config';
 

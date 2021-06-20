@@ -1,9 +1,9 @@
-const createError = require('../utils/createError');
 import {
   ExpressRequest,
   ExpressResult,
   MiddlewareHandler,
-} from './types.d';
+} from './types';
+import createError from '../utils/createError';
 
 /**
  * Function to allow handlers to return response objects, and handle errors.
